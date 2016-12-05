@@ -10,6 +10,13 @@
 
   <body>
     <% if current_user %>
+      <% if current_user.teacher %>
+      <%= 'Hello Teacher' %>
+      <% elsif current_user.student %>
+      <%= 'Hello Student' %>
+      <% else %>
+      <%= "Hello user who ain't doin shit" %>
+      <% end %>
       <%= current_user.first_name %>
       <%= link_to 'Log Out', session_path('current_user'), :method => :delete %>
       <% else %>
