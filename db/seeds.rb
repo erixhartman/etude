@@ -9,7 +9,9 @@
 User.create(
   first_name: "Eric",
   last_name: "Hartman",
-  email: "eah458@nyu.edu"
+  email: "eah458@nyu.edu",
+  password: "123",
+  password_confirmation: "123"
 )
 
 Teacher.create(
@@ -21,7 +23,9 @@ Teacher.create(
 User.create(
   first_name: "Luke",
   last_name: "Plourde",
-  email: "luke@luke.com"
+  email: "luke@luke.com",
+  password: "123",
+  password_confirmation: "123"
 )
 
 Teacher.create(
@@ -33,7 +37,9 @@ Teacher.create(
 User.create(
   first_name: "Ian",
   last_name: "Russell",
-  email: "ian@ian.com"
+  email: "ian@ian.com",
+  password: "123",
+  password_confirmation: "123"
 )
 
 Teacher.create(
@@ -45,7 +51,9 @@ Teacher.create(
 User.create(
   first_name: "Mike",
   last_name: "Schwartze",
-  email: "mike@mike.com"
+  email: "mike@mike.com",
+  password: "123",
+  password_confirmation: "123"
 )
 
 Teacher.create(
@@ -57,7 +65,9 @@ Teacher.create(
 User.create(
   first_name: "Seat",
   last_name: "Yourself",
-  email: "seat@yourself.com"
+  email: "seat@yourself.com",
+  password: "123",
+  password_confirmation: "123"
 )
 
 Student.create(
