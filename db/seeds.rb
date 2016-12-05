@@ -6,40 +6,60 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Teacher.create(
+User.create(
   first_name: "Eric",
   last_name: "Hartman",
-  email: "eah458@nyu.edu",
-  price: 20,
-  subject: 'guitar',
+  email: "eah458@nyu.edu"
 )
 
 Teacher.create(
+  price: 20,
+  subject: 'Spanish',
+  user_id: 1
+)
+
+User.create(
   first_name: "Luke",
   last_name: "Plourde",
-  email: "luke@luke.com",
-  price: 40,
-  subject: 'guitar',
+  email: "luke@luke.com"
 )
 
 Teacher.create(
+  price: 30,
+  subject: 'Spanish',
+  user_id: 2
+)
+
+User.create(
   first_name: "Ian",
   last_name: "Russell",
-  email: "ian@ian.com",
-  price: 40,
-  subject: 'spanish',
+  email: "ian@ian.com"
 )
 
 Teacher.create(
-  first_name: "Mike",
-  last_name: "Schwartze",
-  email: "mike@mike.com",
-  price: 20,
-  subject: 'spanish',
+  price: 25,
+  subject: 'Guitar',
+  user_id: 3
 )
 
-Student.create(
+User.create(
+  first_name: "Mike",
+  last_name: "Schwartze",
+  email: "mike@mike.com"
+)
+
+Teacher.create(
+  price: 35,
+  subject: 'Guitar',
+  user_id: 4
+)
+
+User.create(
   first_name: "Seat",
   last_name: "Yourself",
   email: "seat@yourself.com"
+)
+
+Student.create(
+  user_id: 5
 )
