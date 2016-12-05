@@ -15,7 +15,8 @@
       <% elsif current_user.student %>
       <%= 'Hello Student' %>
       <% else %>
-      <%= "Hello user who ain't doin shit" %>
+      <%= link_to "I want to teach", new_teacher_path %>
+      <%= link_to "I want to learn", new_student_path %>
       <% end %>
       <%= current_user.first_name %>
       <%= link_to 'Log Out', session_path('current_user'), :method => :delete %>
