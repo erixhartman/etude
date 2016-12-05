@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :lessons, only: [:new, :create]
+
+  resources :sessions, only: [:new, :create, :destroy]
 end
