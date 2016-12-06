@@ -1,0 +1,19 @@
+<h1>Test!</h1>
+
+<% if current_user.student %>
+  <p>Your lessons as a student</p>
+  <% current_user.student.lessons.each do |l| %>
+    <%= l.teacher.first_name %><br>
+    <%= l.teacher.subject %><br>
+    <%= l.teacher.price %><br>
+    <%= l.time %><br>
+  <% end %>
+<% end %>
+
+<% if current_user.teacher %>
+  <p>Your lessons as a teacher</p>
+  <% current_user.teacher.lessons.each do |l| %>
+    <%= l.student.first_name %><br>
+    <%= l.time %><br>
+  <% end %>
+<% end %>
