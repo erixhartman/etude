@@ -1,17 +1,21 @@
-<% if current_user.student %>
+<% if current_user != nil %>
+  <% if current_user.student %>
 
-<h1><%= "#{@teacher.subject} lessons with #{@teacher.first_name} #{@teacher.last_name}" %></h1>
+    <h1><%= "#{@teacher.subject} lessons with #{@teacher.first_name} #{@teacher.last_name}" %></h1>
 
-<%= form_for([@teacher, @lesson]) do |f| %>
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.datetime_field :time %>
-  </div>
-  <div class="actions"><%= f.submit %></div>
-<% end %>
+    <%= form_for([@teacher, @lesson]) do |f| %>
+      <div class="field">
+        <%= f.label :time %><br />
+        <%= f.datetime_field :time %>
+      </div>
+      <div class="actions"><%= f.submit %></div>
+    <% end %>
 
+  <% else %>
+
+    <h1>You are not a student</h1>
+
+  <% end %>
 <% else %>
-
-<h1>You are not a student</h1>
-
-<% end %>
+  <h1>You are not logged in!</h1>
+<% end%>
