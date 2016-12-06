@@ -1,1 +1,17 @@
 <h1>Hello! These are all the Teachers!</h1>
+
+<h2>Subjects</h2>
+<ul>
+<% @teachers.select("subject").group("subject").each do |t| %>
+  <li><p><%= t.subject %></p></li>
+<% end %>
+</ul>
+
+<h2>Teachers</h2>
+<ul>
+<% @users.each do |t| %>
+  <% if t.teacher != nil %>
+  <li><p><%= "#{t.first_name} #{t.last_name} #{t.teacher.subject}" %></p></li>
+  <% end %>
+<% end %>
+</ul>
