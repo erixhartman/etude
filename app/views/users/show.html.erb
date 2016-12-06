@@ -1,19 +1,17 @@
-<h1>Test!</h1>
-
 <% if current_user.student %>
-  <p>Your lessons as a student</p>
+  <h3>Your lessons as a student</h3>
   <% current_user.student.lessons.each do |l| %>
-    <%= l.teacher.first_name %><br>
-    <%= l.teacher.subject %><br>
-    <%= l.teacher.price %><br>
-    <%= l.time %><br>
+    <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
+    <%= "Date & Time: #{l.time} | " %>
+    <%= "For $#{l.teacher.price} per hour" %>
+    <%= link_to "View Lesson", lesson_path(l.id) %><br>
   <% end %>
 <% end %>
 
 <% if current_user.teacher %>
-  <p>Your lessons as a teacher</p>
+  <h3>Your lessons as a teacher</h3>
   <% current_user.teacher.lessons.each do |l| %>
-    <%= l.student.first_name %><br>
-    <%= l.time %><br>
+    <%= l.student.first_name %>
+    <%= l.time %>
   <% end %>
 <% end %>
