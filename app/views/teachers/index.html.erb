@@ -11,7 +11,7 @@
 <ul>
 <% @users.each do |t| %>
   <% if t.teacher != nil %>
-  <li><p><%= "#{t.first_name} #{t.last_name} #{t.teacher.subject}" %></p></li>
+  <li><p><%= "#{t.first_name} #{t.last_name} #{t.teacher.subject} $#{t.teacher.price}" %></p></li>
   <% end %>
 <% end %>
 </ul>
