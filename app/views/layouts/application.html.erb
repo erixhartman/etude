@@ -21,8 +21,8 @@
           <%= link_to "I want to learn", new_student_path %>
         <% end %>
         <%= current_user.first_name %>
-        <%= link_to 'Log Out', session_path('current_user'), :method => :delete %>
-        <%= link_to 'My Profile', user_path('current_user') %>
+        <%= link_to 'Log Out', session_path(current_user.id), :method => :delete %>
+        <%= link_to 'My Profile', user_path(current_user.id) %>
       <% else %>
         <%= link_to 'Log In', new_session_path %>
         <%= link_to 'Sign Up', new_user_path %>
