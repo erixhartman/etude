@@ -12,9 +12,5 @@
   <div class="field">
     <%= f.label :postal_code %><br />
     <%= f.text_field :postal_code %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field_tag 'user_id', current_user.id  %>
-  </div>
   <div class="actions"><%= f.submit %></div>
 <% end %>

@@ -8,21 +8,25 @@ class TeachersController < ApplicationController
   end
 
   def create
-    @teacher = Teacher.new(teacher_params)
+    @user = current_user
+    @teacher = Teacher.new(
+      price: :price,
+      subject: :subject,
+      postal_code: :postal_code,
+      'user_id' => @user.id
+    )
 
     if @teacher.save
       redirect_to root_path
     else
       render 'new'
     end
-
   end
 
   private
 
   def teacher_params
-    user_id = current_user.id
-    params.require(:teacher).permit(:price, :subject, :postal_code, :user_id )
+    params.require(:teacher).permit(:price, :subject, :postal_code)
   end
 
 end
