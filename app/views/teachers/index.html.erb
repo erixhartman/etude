@@ -9,9 +9,7 @@
 
 <h2>Teachers</h2>
 <ul>
-<% @users.each do |t| %>
-  <% if t.teacher != nil %>
-  <li><p><%= "#{t.first_name} #{t.last_name} #{t.teacher.subject} $#{t.teacher.price}" %></p></li>
-  <% end %>
+<% @teachers.each do |t| %>
+  <li><p><%= link_to "#{t.first_name} #{t.last_name} #{t.subject} $#{t.price}", teacher_url(t.id) %></p></li>
 <% end %>
 </ul>
