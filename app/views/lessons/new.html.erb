@@ -1,4 +1,6 @@
-<h1>Lessons!!!!</h1>
+<% if current_user.student %>
+
+<h1><%= "#{@teacher.subject} lessons with #{@teacher.first_name} #{@teacher.last_name}" %></h1>
 
 <%= form_for([@teacher, @lesson]) do |f| %>
   <div class="field">
@@ -6,4 +8,10 @@
     <%= f.datetime_field :time %>
   </div>
   <div class="actions"><%= f.submit %></div>
+<% end %>
+
+<% else %>
+
+<h1>You are not a student</h1>
+
 <% end %>
