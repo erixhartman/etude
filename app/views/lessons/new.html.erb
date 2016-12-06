@@ -1,0 +1,9 @@
+<h1>Lessons!!!!</h1>
+
+<%= form_for([@teacher, @lesson]) do |f| %>
+  <div class="field">
+    <%= f.label :time %><br />
+    <%= f.datetime_select :time %>
+  </div>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

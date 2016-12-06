@@ -2,4 +2,4 @@
 <h2><%= "#{@teacher.subject}" %></h2>
 <h2><%= "$#{@teacher.price}" %></h2>
 
-<h2><%= link_to 'Book Lesson', new_teacher_lesson %></h2>
+<h2><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h2>
