@@ -1,16 +1,18 @@
 class LessonsController < ApplicationController
 
   def new
-    @lesson = Lessson.new
+    @lesson = Lesson.new
+    @teacher = Teacher.find(params[:teacher_id])
   end
 
   def create
     @user = current_user
-    @student = @user.student.id
-    @lesson = @teacher.Lesson.new(
+    @student = Student.find_by(user_id: @user.id)
+    @teacher = Teacher.find(params[:teacher_id])
+    @lesson = Lesson.new(
       teacher_id: @teacher.id,
       time: lesson_params[:time],
-      student_id: @student
+      student_id: @student.id
     )
     if @lesson.save
       redirect_to root_path
