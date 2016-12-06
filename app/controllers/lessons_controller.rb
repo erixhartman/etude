@@ -14,6 +14,7 @@ class LessonsController < ApplicationController
       time: lesson_params[:time],
       student_id: @student.id
     )
+    
     if @lesson.save
       redirect_to root_path
     else
