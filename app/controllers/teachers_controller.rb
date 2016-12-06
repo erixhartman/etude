@@ -14,9 +14,9 @@ class TeachersController < ApplicationController
   def create
     @user = current_user
     @teacher = Teacher.new(
-      price: :price,
-      subject: :subject,
-      postal_code: :postal_code,
+      price: teacher_params[:price],
+      subject: teacher_params[:subject],
+      postal_code: teacher_params[:postal_code],
       'user_id' => @user.id
     )
 
