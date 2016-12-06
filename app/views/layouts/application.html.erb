@@ -9,21 +9,24 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user.teacher %>
-      <%= 'Hello Teacher' %>
-      <% elsif current_user.student %>
-      <%= 'Hello Student' %>
+    <header>
+      <h1><%= link_to 'Étude', root_path %></h1>
+      <% if current_user %>
+        <% if current_user.teacher %>
+          <%= 'Hello Teacher' %>
+        <% elsif current_user.student %>
+          <%= 'Hello Student' %>
+        <% else %>
+          <%= link_to "I want to teach", new_teacher_path %>
+          <%= link_to "I want to learn", new_student_path %>
+        <% end %>
+        <%= current_user.first_name %>
+        <%= link_to 'Log Out', session_path('current_user'), :method => :delete %>
       <% else %>
-      <%= link_to "I want to teach", new_teacher_path %>
-      <%= link_to "I want to learn", new_student_path %>
+        <%= link_to 'Log In', new_session_path %>
+        <%= link_to 'Sign Up', new_user_path %>
       <% end %>
-      <%= current_user.first_name %>
-      <%= link_to 'Log Out', session_path('current_user'), :method => :delete %>
-      <% else %>
-      <%= link_to 'Log In', new_session_path %>
-      <%= link_to 'Sign Up', new_user_path %>
-    <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
