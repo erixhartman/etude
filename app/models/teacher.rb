@@ -15,4 +15,12 @@ class Teacher < ApplicationRecord
     User.find(self.user_id).email
   end
 
+  def available?(time)
+    lessons.each do |l|
+      if l.time == time
+        return false
+      end
+    end
+    return true
+  end
 end
