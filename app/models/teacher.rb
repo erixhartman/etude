@@ -16,9 +16,11 @@ class Teacher < ApplicationRecord
   end
 
   def available?(time)
-    lessons.each do |l|
-      if l.time == time
-        return false
+    if lessons.length > 0
+      lessons.each do |l|
+        if l.time == time
+          return false
+        end
       end
     end
     return true
