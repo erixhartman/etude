@@ -1,1 +1,20 @@
 <h1>New Teacher Sign Up</h1>
+
+<%= form_for @teacher do |f| %>
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field_tag 'user_id', current_user.id  %>
+  </div>
+  <div class="actions"><%= f.submit %></div>
+<% end %>
