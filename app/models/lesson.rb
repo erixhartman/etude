@@ -4,15 +4,13 @@ class Lesson < ApplicationRecord
 
   validates :time, allow_blank: false, presence: true
   validate :lesson_active, on: :create
+  validate :teacher_must_be_available, on: :create
 
-  # def teacher_must_be_available
-  #   if teacher.available?(time)
-  #     # To Do Add Errors
-  #     puts "****************OK"
-  #   else
-  #     puts "****************ERROR"
-  #   end
-  # end
+  def teacher_must_be_available
+    unless teacher.available?(time)
+      errors.add(:time, "Teacher is not available at this time")
+    end
+  end
 
   def lesson_active
     if self.time != nil
