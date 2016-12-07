@@ -17,7 +17,7 @@
        <% end %>
       <div class="field">
         <%= f.label :time %><br />
-        <%= f.datetime_field :time, min: (Date.today + (1.day)), :step => 3600 %>
+        <%= f.datetime_field :time, min: (Date.today + (1.day)), :step => 3600, max: (Date.today + (1.year)) %>
       </div>
       <div class="actions"><%= f.submit %></div>
     <% end %>
