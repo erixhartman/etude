@@ -15,8 +15,10 @@ class Lesson < ApplicationRecord
   # end
 
   def lesson_active
-    unless Time.now < self.time
-      errors.add(:time, 'You must book in the future')
+    if self.time != nil
+      unless Time.now < self.time
+        errors.add(:time, 'You must book in the future')
+      end
     end
   end
 
