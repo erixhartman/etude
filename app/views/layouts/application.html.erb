@@ -13,14 +13,13 @@
       <h1><%= link_to 'Étude', root_path %></h1>
       <% if current_user %>
         <% if current_user.teacher %>
-          <%= 'Hello Teacher' %>
+          <%= 'Hello Teacher ' + current_user.first_name %>
         <% elsif current_user.student %>
-          <%= 'Hello Student' %>
+          <%= 'Hello Student ' + current_user.first_name %>
         <% else %>
           <%= link_to "I want to teach", new_teacher_path %>
           <%= link_to "I want to learn", new_student_path %>
         <% end %>
-        <%= current_user.first_name %>
         <%= link_to 'Log Out', session_path(current_user.id), :method => :delete %>
         <%= link_to 'My Profile', user_path(current_user.id) %>
       <% else %>
