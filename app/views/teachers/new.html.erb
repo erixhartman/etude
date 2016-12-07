@@ -7,7 +7,7 @@
   </div>
   <div class="field">
     <%= f.label :price %><br />
-    <%= f.number_field :price %>
+    <%= f.number_field(:price, in: 1..10000) %>
   </div>
   <div class="field">
     <%= f.label :postal_code %><br />
