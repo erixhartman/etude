@@ -17,7 +17,7 @@
        <% end %>
       <div class="field">
         <%= f.label :time %><br />
-        <%= f.datetime_field :time, min: (Time.now + 1.day) %>
+        <%= f.datetime_field :time, min: (Time.now + 12.hours) %>
       </div>
       <div class="actions"><%= f.submit %></div>
     <% end %>
