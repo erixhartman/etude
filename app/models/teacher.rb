@@ -3,6 +3,10 @@ class Teacher < ApplicationRecord
   has_many :lessons
   has_many :students, through: :lessons
 
+  validates :subject, :postal_code, presence: true
+  validates :price, numericality: {only_integer: true}
+
+
   def first_name
     User.find(self.user_id).first_name
   end
