@@ -78,6 +78,24 @@ Student.create(
   user_id: 5
 )
 
+Lesson.create(
+  time: "2017-01-02 12:00:00",
+  student_id: 1,
+  teacher_id: 1
+)
+
+Lesson.create(
+  time: "2017-01-03 12:00:00",
+  student_id: 1,
+  teacher_id: 1
+)
+
+Lesson.create(
+  time: "2017-01-04 12:00:00",
+  student_id: 1,
+  teacher_id: 1
+)
+
 x = 0
 7.times do
   AvailabilityRange.create(
