@@ -1,0 +1,2 @@
+module AvailabilityRangesHelper
+end

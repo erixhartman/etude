@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root :to => redirect('/teachers')
   resources :students, only: [:new, :create]
 
@@ -11,4 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :availability_ranges, only [:new, :create, :edit, :update]
+
 end
