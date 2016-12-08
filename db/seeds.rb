@@ -9,7 +9,7 @@
 User.create(
   first_name: "Eric",
   last_name: "Hartman",
-  email: "eah458@nyu.edu",
+  email: "eric@eric.com",
   password: "123",
   password_confirmation: "123"
 )
@@ -77,3 +77,14 @@ User.create(
 Student.create(
   user_id: 5
 )
+
+7.times do
+  x = 0
+  AvailabilityRange.create(
+  teacher_id: 1,
+  start_time: 9,
+  end_time: 17,
+  weekday: x
+  )
+  x = x + 1
+end
