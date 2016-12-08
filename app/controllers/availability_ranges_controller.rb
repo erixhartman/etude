@@ -1,7 +1,8 @@
 class AvailabilityRangesController < ApplicationController
   def new
+    @user = current_user
+    @teacher = Teacher.find_by(user_id: @user.id)
     @availability_range = AvailabilityRange.new
-    @teacher = Teacher.find(params[:teacher_id])
   end
 
   def create
@@ -13,6 +14,12 @@ class AvailabilityRangesController < ApplicationController
       end_time: availability_range_params[:end_time],
       teacher_id: @teacher.id
     )
+
+    if @availability_range.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def edit
