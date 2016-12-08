@@ -1,6 +1,7 @@
 class Teacher < ApplicationRecord
   belongs_to :user
   has_many :lessons
+  has_many :availability_ranges
   has_many :students, through: :lessons
 
   validates :subject, :postal_code, presence: true

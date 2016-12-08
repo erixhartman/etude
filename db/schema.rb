@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205215214) do
+ActiveRecord::Schema.define(version: 20161208201126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availability_ranges", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.integer  "weekday"
+    t.integer  "start_time"
+    t.integer  "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "time"
