@@ -78,8 +78,8 @@ Student.create(
   user_id: 5
 )
 
+x = 0
 7.times do
-  x = 0
   AvailabilityRange.create(
   teacher_id: 1,
   start_time: 9,
