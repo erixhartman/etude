@@ -25,6 +25,12 @@ class AvailabilityRangesController < ApplicationController
   def edit
   end
 
+  def show
+    @current_user = current_user
+    @teacher = Teacher.find_by(user_id: @current_user.id)
+    @availability_ranges = AvailabilityRange.all
+  end
+
   def update
   end
 
