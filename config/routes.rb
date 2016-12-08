@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :availability_ranges, only [:new, :create, :edit, :update]
+  resources :availability_ranges, only: [:new, :create, :edit, :update]
 
 end
