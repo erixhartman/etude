@@ -17,6 +17,7 @@ User.create(
 Teacher.create(
   price: 20,
   subject: 'Spanish',
+  postal_code: 123,
   user_id: 1
 )
 
@@ -31,6 +32,7 @@ User.create(
 Teacher.create(
   price: 30,
   subject: 'Spanish',
+  postal_code: 123,
   user_id: 2
 )
 
@@ -45,6 +47,7 @@ User.create(
 Teacher.create(
   price: 25,
   subject: 'Guitar',
+  postal_code: 123,
   user_id: 3
 )
 
@@ -59,6 +62,7 @@ User.create(
 Teacher.create(
   price: 35,
   subject: 'Guitar',
+  postal_code: 123,
   user_id: 4
 )
 
