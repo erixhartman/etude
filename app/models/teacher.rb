@@ -23,7 +23,7 @@ class Teacher < ApplicationRecord
     weekday = date.wday
     hour = date.hour
     self.availability_ranges.each do |a|
-      if a.weekday == weekday && a.start_time <= hour && a.end_time > hour - 1
+      if a.weekday == weekday && a.start_time <= hour && a.end_time > hour
         return true
       end
     end
