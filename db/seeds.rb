@@ -112,3 +112,14 @@ x = 0
   )
   x = x + 1
 end
+
+y = 0
+7.times do
+  AvailabilityRange.create(
+  teacher_id: 2,
+  start_time: 9,
+  end_time: 17,
+  weekday: y
+  )
+  y = y + 1
+end
