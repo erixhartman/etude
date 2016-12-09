@@ -9,5 +9,10 @@
 <h3> <%= "#{@teacher.first_name}'s address" %></h3>
 <h3><%= "#{@teacher.street_address}, #{@teacher.city}" %></h3>
 <h3><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h3>
-
 <h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
+<h3>Availability</h3>
+<% @teacher.availability_ranges.each do |r| %>
+  <p>Day: <em><%= "#{r.weekday_name}" %></em></p>
+  <p>Start Time: <em><%= "#{r.start_time}" %></em></p>
+  <p>End Time: <em><%= "#{r.end_time}" %></em></p>
+<% end %>
