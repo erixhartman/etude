@@ -1,6 +1,6 @@
 class AvailabilityRange < ApplicationRecord
   belongs_to :teacher
-   validates_uniqueness_of :weekday, scope: :teacher_id
+  validates_uniqueness_of :weekday, scope: :teacher_id
 
   def start_time_to_12h
     t = self.start_time

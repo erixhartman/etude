@@ -1,0 +1,10 @@
+<%= form_for @availability_range do |f| %>
+  <p>Change Availabilty for <%= @availability_range.weekday_name %></p>
+  <%= f.label :start_time %>
+  <%= f.number_field(:start_time, in: 0..23) %>
+  <%= f.label :end_time %>
+  <%= f.number_field(:end_time, in: 0..23) %>
+  <span class="actions">
+  <%= f.submit "Submit New Available Hours"%>
+  </span>
+<% end %>

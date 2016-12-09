@@ -1,9 +1,15 @@
-<h1>Avaliability ranges show page</h1>
-  <% @availability_ranges.each do |a| %>
-  <br>
-  Teacher id: <%= a.teacher_id %><br>
-  Weekday: <%= a.weekday_name %><br>
-  Start Time: <%= a.start_time %><br>
-  End Time: <%= a.end_time %><br>
-
+<h3>Availability</h3>
+<table>
+  <th>
+    <tr>Day</tr>
+    <tr>Start Time</tr>
+    <tr>End Time</tr>
+  </th>
+  <% @teacher.availability_ranges.each do |r| %>
+  <tr>
+    <td><%= "#{r.weekday_name}" %></td>
+    <td><%= "#{r.start_time_to_12h}" %></td>
+    <td><%= "#{r.end_time_to_12h}" %></td>
+  </tr>
   <% end %>
+</table>

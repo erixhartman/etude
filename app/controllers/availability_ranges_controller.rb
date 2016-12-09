@@ -22,16 +22,23 @@ class AvailabilityRangesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def show
     @current_user = current_user
     @teacher = Teacher.find_by(user_id: @current_user.id)
     @availability_ranges = AvailabilityRange.all
   end
 
+  def edit
+    @availability_range = AvailabilityRange.find(params[:id])
+  end
+
   def update
+    @availability_range = AvailabilityRange.find(params[:id])
+    if @availability_range.update_attributes(availability_range_params)
+      redirect_to availability_range_path(@availability_range.id)
+    else
+      render 'edit'
+    end
   end
 
   private

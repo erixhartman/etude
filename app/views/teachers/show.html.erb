@@ -20,8 +20,8 @@
   <% @teacher.availability_ranges.each do |r| %>
   <tr>
     <td><%= "#{r.weekday_name}" %></td>
-    <td><%= "#{r.start_time}" %></td>
-    <td><%= "#{r.end_time}" %></td>
+    <td><%= "#{r.start_time_to_12h}" %></td>
+    <td><%= "#{r.end_time_to_12h}" %></td>
   </tr>
   <% end %>
 </table>
