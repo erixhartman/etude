@@ -1,7 +1,13 @@
 <h3><img src="<%= @teacher.picture %>" alt="<%= @teacher.first_name %> Picture"></h3>
 
 <h3><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h3>
-<h3><%= "#{@teacher.subject}" %></h3>
-<h3><%= "$#{@teacher.price}" %></h3>
+<h3><%= "Subject: #{@teacher.subject}" %></h3>
+<h3> <%= "About #{@teacher.first_name}" %></h3>
+<p><%= "#{@teacher.bio}" %></p>
+<h3><%= "Cost per lesson: $#{@teacher.price}" %></h3>
+<h3><%= "Teaching since: #{@teacher.teaching_since}" %></h3>
+<h3> <%= "#{@teacher.first_name}'s address" %></h3>
+<h3><%= "#{@teacher.street_address}, #{@teacher.city}" %></h3>
+<h3><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h3>
 
 <h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
