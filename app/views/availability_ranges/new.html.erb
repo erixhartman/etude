@@ -1,12 +1,16 @@
-<h1>AvailabilityRanges#new</h1>
-<%= form_for @availability_range  do |f| %>
-  <%= f.label :weekday %>
-  <%= f.number_field(:weekday, in: 0..6)%> <br>
-  <%= f.label :start_time %>
-  <%= f.number_field(:start_time, in: 0..23) %> <br>
-  <%= f.label :end_time %>
-  <%= f.number_field(:end_time, in: 0..23) %> <br>  
-<div class="actions">
-  <%= f.submit %>
-</div>
+<h1>AvailabilityRanges</h1>
+<% x = 0 %>
+<% 7.times do %>
+  <%= form_for @availability_range  do |f| %>
+    <%= f.label :weekday %>
+    <%= f.number_field(:weekday, in: 0..6, value: x)%>
+    <%= f.label :start_time %>
+    <%= f.number_field(:start_time, in: 0..23) %>
+    <%= f.label :end_time %>
+    <%= f.number_field(:end_time, in: 0..23) %>
+    <span class="actions">
+    <%= f.submit %>
+    </span>
+    <% x = x + 1 %>
+  <% end %>
 <% end %>
