@@ -1,5 +1,6 @@
 class AvailabilityRange < ApplicationRecord
   belongs_to :teacher
+   validates_uniqueness_of :weekday, scope: :teacher_id
 
   def weekday_name
     case self.weekday
