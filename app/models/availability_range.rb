@@ -2,23 +2,25 @@ class AvailabilityRange < ApplicationRecord
   belongs_to :teacher
    validates_uniqueness_of :weekday, scope: :teacher_id
 
-  def weekday_name
-    case self.weekday
-    when 0
-      "Sunday"
-    when 1
-      "Monday"
-    when 2
-      "Tuesday"
-    when 3
-      "Wednesday"
-    when 4
-      "Thursday"
-    when 5
-      "Friday"
-    when 6
-      "Saturday"
+  def start_time_to_12h
+    t = self.start_time
+    case t
+    when 0..11
+      "#{t} AM"
+    when 12..23
+      "#{t - 12} PM"
     end
   end
+
+  def end_time_to_12h
+    t = self.end_time
+    case t
+    when 0..11
+      "#{t} AM"
+    when 12..23
+      "#{t - 12} PM"
+    end
+  end
+
 
 end
