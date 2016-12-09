@@ -10,18 +10,4 @@
 <h3><%= "#{@teacher.street_address}, #{@teacher.city}" %></h3>
 <h3><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h3>
 <h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
-<h3>Availability</h3>
-<table>
-  <th>
-    <tr>Day</tr>
-    <tr>Start Time</tr>
-    <tr>End Time</tr>
-  </th>
-  <% @teacher.availability_ranges.each do |r| %>
-  <tr>
-    <td><%= "#{r.weekday_name}" %></td>
-    <td><%= "#{r.start_time_to_12h}" %></td>
-    <td><%= "#{r.end_time_to_12h}" %></td>
-  </tr>
-  <% end %>
-</table>
+<%= render 'availability_ranges/show' %>

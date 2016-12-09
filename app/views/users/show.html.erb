@@ -9,6 +9,8 @@
 <% end %>
 
 <% if current_user.teacher %>
+  <%= render 'availability_ranges/show' %>
+
   <h3>Your lessons as a teacher</h3>
   <% current_user.teacher.lessons.each do |l| %>
     <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
