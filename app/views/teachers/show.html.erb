@@ -1,5 +1,7 @@
-<h2><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h2>
-<h2><%= "#{@teacher.subject}" %></h2>
-<h2><%= "$#{@teacher.price}" %></h2>
+<h3><img src="<%= @teacher.picture %>" alt="<%= @teacher.first_name %> Picture"></h3>
 
-<h2><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h2>
+<h3><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h3>
+<h3><%= "#{@teacher.subject}" %></h3>
+<h3><%= "$#{@teacher.price}" %></h3>
+
+<h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
