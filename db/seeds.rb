@@ -18,7 +18,13 @@ Teacher.create(
   price: 20,
   subject: 'Spanish',
   postal_code: 123,
-  user_id: 1
+  user_id: 1,
+  bio: "A BUNCH OF GARBÁGE!",
+  picture: "http://lorempizza.com/380/240",
+  teaching_since: Time.now,
+  street_address: "123 Underpass",
+  city: "Kitchener",
+  province: "ON"
 )
 
 User.create(
