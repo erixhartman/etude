@@ -11,6 +11,12 @@
 <% if current_user.teacher %>
   <%= render 'availability_ranges/show' %>
 
+  <% if @teacher.availability_ranges.count < 7 %>
+    <h4>Add to your availability</h4>
+    <%= render 'availability_ranges/update' %>
+  <% end %>
+
+
   <h3>Your lessons as a teacher</h3>
   <% current_user.teacher.lessons.each do |l| %>
     <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
