@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
       time: lesson_params[:time],
       student_id: @student.id
     )
-    
+
     if @lesson.save
       redirect_to root_path
     else
@@ -25,7 +25,8 @@ class LessonsController < ApplicationController
   def destroy
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
-    redirect_to user_path
+    redirect_to root_path
+    #TODO redirect_to a user profile page rather than root?
   end
 
   def show

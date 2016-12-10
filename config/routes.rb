@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   resources :availability_ranges, only: [:new, :create, :show, :edit, :update]
 
+
+
 end
