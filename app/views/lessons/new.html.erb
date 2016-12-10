@@ -6,7 +6,7 @@
     <%= form_for([@teacher, @lesson]) do |f| %>
     <% if @lesson.errors.any? %>
          <div id="error_explanation">
-           <h2><%= pluralize(@lesson.errors.count, "Error") %> prevented this project from being created:</h2>
+           <h2><%= pluralize(@lesson.errors.count, "Error") %> prevented this lesson from being created:</h2>
 
            <ul>
              <% @lesson.errors.full_messages.each do |msg| %>
