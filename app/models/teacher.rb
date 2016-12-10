@@ -4,7 +4,7 @@ class Teacher < ApplicationRecord
   has_many :availability_ranges
   has_many :students, through: :lessons
 
-  validates :subject, :postal_code, presence: true
+  validates :subject, :postal_code, :bio, :picture, :teaching_since, :street_address, :city, :province, presence: true
   validates :price, numericality: {only_integer: true}
 
   def first_name
