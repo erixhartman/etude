@@ -19,7 +19,7 @@ teacherusers.each do
     price: rand(20..50),
     subject: teacherusers[x][:subject],
     postal_code: "M5V 3M1",
-    user_id: x,
+    user_id: x + 1,
     bio: "I'm a very good #{teacherusers[x][:subject].downcase} teacher...",
     picture: "http://robohash.org/#{rand(1..99999)}",
     teaching_since: Time.now,
@@ -34,24 +34,21 @@ end
 4.times do |x|
   User.create(
     first_name: "User#{x}",
-    last_name: "User",
+    last_name: "Smith",
     email: "user#{x}@user.com",
     password: "123",
     password_confirmation: "123"
   )
-  Student.create(user_id: x)
+  user = User.last
+  Student.create(user_id: user.id)
 end
 
-# Create lessons
-Lesson.create(time: Time.new(2017, 05, 10, 11, 0, 0), student_id: 1, teacher_id: 1)
-Lesson.create(time: Time.new(2017, 05, 10, 12, 0, 0), student_id: 1, teacher_id: 1)
-Lesson.create(time: Time.new(2017, 05, 10, 13, 0, 0), student_id: 1, teacher_id: 1)
 
 # Create random availability ranges for all teachers
 teachers = Array (1..Teacher.all.count)
 teachers.each do |t|
   x = 0
-  rand(0..6).times do
+  rand(1..6).times do
     start_time = rand(7..19)
     end_time = rand((start_time + 2)..23)
     AvailabilityRange.create(
@@ -60,6 +57,14 @@ teachers.each do |t|
     end_time: end_time,
     weekday: x
     )
+    # Create a bunch of random lesons
+    10.times do
+      Lesson.create(
+      time: Time.new(2017, rand(2..5), (rand(1..25)), (start_time + 1), 0, 0),
+      student_id: rand(1..4),
+      teacher_id: t
+      )
+    end
     x = x + 1
   end
 end
