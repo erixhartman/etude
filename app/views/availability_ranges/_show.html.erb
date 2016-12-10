@@ -1,4 +1,4 @@
-<h3>Availability</h3>
+<h3>Availability <%= link_to 'Edit All', availability_ranges_path %></h3>
 <table>
   <th>
     <tr>Day</tr>
@@ -10,6 +10,7 @@
     <td><%= "#{r.weekday_name}" %></td>
     <td><%= "#{r.start_time_to_12h}" %></td>
     <td><%= "#{r.end_time_to_12h}" %></td>
+    <td> <%= link_to "Edit #{r.weekday_name}", edit_availability_range_path(r.id) %> </td>
   </tr>
   <% end %>
 </table>
