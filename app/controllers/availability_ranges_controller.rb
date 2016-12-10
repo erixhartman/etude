@@ -28,10 +28,6 @@ class AvailabilityRangesController < ApplicationController
     @availability_ranges = AvailabilityRange.all
   end
 
-  def edit
-    @availability_range = AvailabilityRange.find(params[:id])
-  end
-
   def update
     @availability_range = AvailabilityRange.find(params[:id])
     if @availability_range.update_attributes(availability_range_params)
