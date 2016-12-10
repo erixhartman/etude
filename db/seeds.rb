@@ -1,165 +1,70 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-User.create(
-  first_name: "Eric",
-  last_name: "Hartman",
-  email: "eric@eric.com",
-  password: "123",
-  password_confirmation: "123"
-)
-
-Teacher.create(
-  price: 20,
-  subject: 'Spanish',
-  postal_code: "M5V 3M1",
-  user_id: 1,
-  bio: "A BUNCH OF GARBÁGE!",
-  picture: "http://lorempizza.com/380/240",
-  teaching_since: Time.now,
-  street_address: "200 Front St W",
-  city: "Toronto",
-  province: "ON"
-)
-
-User.create(
-  first_name: "Luke",
-  last_name: "Plourde",
-  email: "luke@luke.com",
-  password: "123",
-  password_confirmation: "123"
-)
-
-Teacher.create(
-  price: 30,
-  subject: 'Spanish',
-  postal_code: "M5V 3M2",
-  user_id: 2,
-  bio: "Lover of safaris",
-  picture: "http://placekitten.com/380/240",
-  teaching_since: (Time.now - (60*60*24*365)),
-  street_address: "225 King St W",
-  city: "Toronto",
-  province: "ON"
-)
-
-User.create(
-  first_name: "Ian",
-  last_name: "Russell",
-  email: "ian@ian.com",
-  password: "123",
-  password_confirmation: "123"
-)
-
-Teacher.create(
-  price: 25,
-  subject: 'Guitar',
-  postal_code: "M5V 3M5",
-  user_id: 3,
-  bio: "Among the better Ian's out there!",
-  picture: "http://placebear.com/380/240",
-  teaching_since: (Time.now - (60*60*24*365*2)),
-  street_address: "23 Spadina Ave",
-  city: "Toronto",
-  province: "ON"
-)
-
-User.create(
-  first_name: "Mike",
-  last_name: "Schwartze",
-  email: "mike@mike.com",
-  password: "123",
-  password_confirmation: "123"
-)
-
-Teacher.create(
-  price: 35,
-  subject: 'Guitar',
-  postal_code: "M5V 3M4",
-  user_id: 4,
-  bio: "Learned from David Gilmour!",
-  picture: "http://placecage.com/380/240",
-  teaching_since: (Time.now - (60*60*24*365*5)),
-  street_address: "511 King St W",
-  city: "Toronto",
-  province: "ON"
-)
-
-User.create(
-  first_name: "Seat",
-  last_name: "Yourself",
-  email: "seat@yourself.com",
-  password: "123",
-  password_confirmation: "123"
-)
-
-Student.create(
-  user_id: 5
-)
-
-Lesson.create(
-  time: Time.new(2017, 05, 10, 11, 0, 0),
-  student_id: 1,
-  teacher_id: 1
-)
-
-Lesson.create(
-  time: Time.new(2017, 05, 10, 12, 0, 0),
-  student_id: 1,
-  teacher_id: 1
-)
-
-Lesson.create(
-  time: Time.new(2017, 05, 10, 13, 0, 0),
-  student_id: 1,
-  teacher_id: 1
-)
+# Create teacher users
+teacherusers = [
+  { first_name: "Eric", last_name: "Hartman", subject: 'Spanish' },
+  { first_name: "Luke", last_name: "Plourde", subject: 'Spanish' },
+  { first_name: "Ian", last_name: "Russell", subject: 'Guitar' },
+  { first_name: "Mike", last_name: "Schwartze", subject: 'Guitar' }
+]
 
 x = 0
-7.times do
-  AvailabilityRange.create(
-  teacher_id: 1,
-  start_time: 9,
-  end_time: 17,
-  weekday: x
+teacherusers.each do
+  User.create(
+    first_name: teacherusers[x][:first_name],
+    last_name: teacherusers[x][:last_name],
+    email: "#{teacherusers[x][:first_name].downcase}@#{teacherusers[x][:first_name].downcase}.com",
+    password: "123",
+    password_confirmation: "123"
+  )
+  Teacher.create(
+    price: rand(20..50),
+    subject: teacherusers[x][:subject],
+    postal_code: "M5V 3M1",
+    user_id: x + 1,
+    bio: "I'm a very good #{teacherusers[x][:subject].downcase} teacher...",
+    picture: "http://robohash.org/#{rand(1..99999)}",
+    teaching_since: Time.now,
+    street_address: "#{rand(50..8000)} Yonge St",
+    city: "Toronto",
+    province: "ON"
   )
   x = x + 1
 end
 
-x = 0
-7.times do
-  AvailabilityRange.create(
-  teacher_id: 2,
-  start_time: 9,
-  end_time: 17,
-  weekday: x
+# Create Student users
+4.times do |x|
+  User.create(
+    first_name: "User#{x}",
+    last_name: "Smith",
+    email: "user#{x}@user.com",
+    password: "123",
+    password_confirmation: "123"
   )
-  x = x + 1
+  user = User.last
+  Student.create(user_id: user.id)
 end
 
-x = 0
-7.times do
-  AvailabilityRange.create(
-  teacher_id: 3,
-  start_time: 9,
-  end_time: 17,
-  weekday: x
-  )
-  x = x + 1
-end
 
-x = 0
-7.times do
-  AvailabilityRange.create(
-  teacher_id: 4,
-  start_time: 9,
-  end_time: 17,
-  weekday: x
-  )
-  x = x + 1
+# Create random availability ranges for all teachers
+teachers = Array (1..Teacher.all.count)
+teachers.each do |t|
+  x = 0
+  rand(1..6).times do
+    start_time = rand(7..19)
+    end_time = rand((start_time + 2)..23)
+    AvailabilityRange.create(
+    teacher_id: t,
+    start_time: start_time,
+    end_time: end_time,
+    weekday: x
+    )
+    # Create a bunch of random lesons
+    10.times do
+      Lesson.create(
+      time: Time.new(2017, rand(2..5), (rand(1..25)), (start_time + 1), 0, 0),
+      student_id: rand(1..4),
+      teacher_id: t
+      )
+    end
+    x = x + 1
+  end
 end
