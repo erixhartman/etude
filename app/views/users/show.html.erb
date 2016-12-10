@@ -1,33 +1,39 @@
-<% if current_user.student %>
-  <% if current_user.student.lessons.length > 0 %>
-    <h3>Your lessons as a student</h3>
-    <% current_user.student.lessons.each do |l| %>
-      <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-      <%= "Date & Time: #{l.time} | " %>
-      <%= "For $#{l.teacher.price} per hour" %>
-      <%= link_to "View Lesson", lesson_path(l.id) %><br>
+<% if current_user != nil %>
+  <% if current_user.student %>
+    <% if current_user.student.lessons.length > 0 %>
+      <h3>Your lessons as a student</h3>
+      <% current_user.student.lessons.each do |l| %>
+        <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
+        <%= "Date & Time: #{l.time} | " %>
+        <%= "For $#{l.teacher.price} per hour" %>
+        <%= link_to "View Lesson", lesson_path(l.id) %><br>
+      <% end %>
+    <% else %>
+    <h3>You have no upcoming lessons!</h3>
     <% end %>
-  <% else %>
-  <h3>You have no upcoming lessons!</h3>
-  <% end %>
-<% end %>
 
-<% if current_user.teacher %>
-  <%= render 'availability_ranges/show' %>
+  <% elsif current_user.teacher %>
+    <%= render 'availability_ranges/show' %>
 
-  <% if @teacher.availability_ranges.count < 7 %>
-    <h4>Add to your availability</h4>
-    <%= render 'availability_ranges/update' %>
-  <% end %>
-
-  <% if @teacher.lessons.length != 0  %>
-    <h3>Your lessons as a teacher</h3>
-    <% current_user.teacher.lessons.each do |l| %>
-      <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-      <%= "Date & Time: #{l.time} | " %>
-      <%= link_to "View Lesson", lesson_path(l.id) %><br>
+    <% if @teacher.availability_ranges.count < 7 %>
+      <h4>Add to your availability</h4>
+      <%= render 'availability_ranges/update' %>
     <% end %>
-  <% else %>
-  <h3>No booked lessons upcoming</h3>
+
+    <% if @teacher.lessons.length != 0  %>
+      <h3>Your lessons as a teacher</h3>
+      <% current_user.teacher.lessons.each do |l| %>
+        <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
+        <%= "Date & Time: #{l.time} | " %>
+        <%= link_to "View Lesson", lesson_path(l.id) %><br>
+      <% end %>
+    <% else %>
+    <h3>No booked lessons upcoming</h3>
+    <% end %>
+    <% else %>
+    <h3>Please select whether you'd like to learn or teach!</h3>
   <% end %>
+<% else %>
+<!--Doesn't Work Yet  -->
+<h3>Please log in!</h3>
 <% end %>
