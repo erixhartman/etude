@@ -17,6 +17,12 @@ class TeachersController < ApplicationController
       price: teacher_params[:price],
       subject: teacher_params[:subject],
       postal_code: teacher_params[:postal_code],
+      bio: teacher_params[:bio],
+      picture: teacher_params[:picture],
+      teaching_since: teacher_params[:teaching_since],
+      street_address: teacher_params[:street_address],
+      city: teacher_params[:city],
+      province: teacher_params[:province],
       'user_id' => @user.id
     )
 
@@ -30,7 +36,7 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:price, :subject, :postal_code)
+    params.require(:teacher).permit(:price, :subject, :postal_code, :bio, :picture, :teaching_since, :street_address, :city, :province)
   end
 
 end
