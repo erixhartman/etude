@@ -35,7 +35,7 @@ class AvailabilityRangesController < ApplicationController
   def update
     @availability_range = AvailabilityRange.find(params[:id])
     if @availability_range.update_attributes(availability_range_params)
-      redirect_to availability_range_path(@availability_range.id)
+      redirect_to user_path
     else
       render 'edit'
     end
