@@ -1,21 +1,19 @@
 <!-- Find all the days that a teacher has a current availability range record and add each of those days to the days_used array -->
 <% days_used = [] %>
-<% @teacher.availability_ranges.each do |r| %>
-  <% days_used << r.weekday %>
-<% end %>
+<% @teacher.availability_ranges.each { |r| days_used << r.weekday } %>
 
 <!-- For each day that they have no availabilty range, render a form to add hours -->
-<% days = [0, 1, 2, 3, 4, 5, 6] %>
+<% days = Array (0..6) %>
 <% days.each do |d| %>
   <% unless days_used.include?(d) %>
     <% @availability_range = AvailabilityRange.new %>
-    <%= form_for @availability_range  do |f| %>
+    <%= form_for @availability_range do |f| %>
       <%= f.hidden_field(:weekday, value: d)%>
       <%= f.label :start_time %>
       <%= f.number_field(:start_time, in: 0..23) %>
       <%= f.label :end_time %>
       <%= f.number_field(:end_time, in: 0..23) %>
-      <span class="actions"><%= f.submit "Add "%></span>
+      <span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span>
     <% end %>
   <% end %>
 <% end %>
