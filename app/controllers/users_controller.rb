@@ -15,9 +15,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    if @user.teacher
-      @teacher = Teacher.find_by(user_id: @user.id)
+    if current_user
+      @user = current_user
+      if @user.teacher
+        @teacher = Teacher.find_by(user_id: @user.id)
+      end
     end
   end
 
