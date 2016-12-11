@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     if @user.teacher
-      @teacher = Teacher.find(@user.id)
+      @teacher = Teacher.find_by(user_id: @user.id)
     end
   end
 
