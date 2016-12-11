@@ -1,2 +1,8 @@
 <h1>Subjects#index</h1>
-<p>Find me in app/views/subjects/index.html.erb</p>
+
+<% @teachers.each do |t| %>
+<div class="teacher">
+  <img src="<%= t.picture %>" alt="<%= "#{t.first_name} #{t.last_name} picture" %>">
+  <p><%= "#{t.first_name} #{t.last_name}" %> <%= link_to 'View Full Profile' %></p>
+</div>
+<% end %>
