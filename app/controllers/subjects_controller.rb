@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   def index
+    @subject = subject_params
     @teachers = Teacher.where(subject: subject_params)
   end
 
