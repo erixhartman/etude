@@ -1,7 +1,7 @@
 <h2>Subjects</h2>
 <ul>
-<% @teachers.select("subject").group("subject").each do |t| %>
-  <li><p><%= link_to t.subject %></p></li>
+<% @subjects.each do |s| %>
+  <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
 <% end %>
 </ul>
 
