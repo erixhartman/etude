@@ -40,6 +40,15 @@
           <%= link_to "View Lesson", lesson_path(l.id) %><br>
         <% end %>
       <% end %>
+    <h3>Your past lessons as a teacher</h3>
+      <% current_user.teacher.lessons.each do |l| %>
+        <% if l.time < Time.now %>
+        <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
+        <%= "Date & Time: #{l.time} | " %>
+        <%= link_to "View Lesson", lesson_path(l.id) %><br>          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <% end %>
+      <% end %>
+      
     <% else %>
     <h3>No booked lessons upcoming</h3>
     <% end %>
