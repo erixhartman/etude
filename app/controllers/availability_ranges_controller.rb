@@ -16,7 +16,7 @@ class AvailabilityRangesController < ApplicationController
     )
 
     if @availability_range.save
-      redirect_to root_path
+      redirect_to user_path(@user.id)
     else
       render 'new'
     end
