@@ -18,8 +18,7 @@
         <% if l.time < Time.now %>
           <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
           <%= "Date & Time: #{l.time} | " %>
-          <%= "For $#{l.teacher.price} per hour" %>
-          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+          <%= "For $#{l.teacher.price} per hour" %><br>
         <% end %>
       <% end %>
 
@@ -49,8 +48,7 @@
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
         <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-        <%= "Date & Time: #{l.time} | " %>
-        <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <%= "Date & Time: #{l.time} | " %><br>
         <% end %>
       <% end %>
 
