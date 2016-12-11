@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root :to => redirect('/teachers')
+
+  resources :subjects, only: [:index, :show]
+
   resources :students, only: [:new, :create]
 
   resources :teachers, only: [:new, :create, :index, :show] do

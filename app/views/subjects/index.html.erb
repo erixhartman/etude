@@ -1,0 +1,9 @@
+<h3><%= "#{@subject} Teachers" %></h3>
+
+<% @teachers.each do |t| %>
+<div class="teacher">
+  <img src="<%= t.picture %>" alt="<%= "#{t.first_name} #{t.last_name} picture" %>">
+  <h4><%= "#{t.first_name} #{t.last_name}" %></h4>
+  <p><%= link_to 'View Full Profile', teacher_url(t.id) %></p>
+</div>
+<% end %>

@@ -1,0 +1,16 @@
+// Place all the styles related to the Subjects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.teacher {
+  border: 1px solid lightgrey;
+  padding: 5px;
+  margin: 5px;
+}
+
+.teacher img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid lightgrey;
+}
