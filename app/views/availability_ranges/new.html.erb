@@ -15,12 +15,12 @@
 <% x = 0 %>
 <% 7.times do %>
   <%= form_for @availability_range  do |f| %>
-    <label for="weekday"><%= weekdays[x] %></label>
+    <label for="weekday"></label>
     <%= f.hidden_field(:weekday, value: x)%>
     <%= f.label :start_time %>
-    <%= f.number_field(:start_time, in: 0..23) %>
+    <%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %>
     <%= f.label :end_time %>
-    <%= f.number_field(:end_time, in: 0..23) %>
+    <%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %>
     <span class="actions">
     <%= f.submit "Add #{weekdays[x]} hours"%>
     </span>
