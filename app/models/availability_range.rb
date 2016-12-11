@@ -11,23 +11,25 @@ class AvailabilityRange < ApplicationRecord
 
   def start_time_to_12h
     t = self.start_time
-    case t
-    when 0..11
-      "#{t} AM"
-    when 12..23
-      "#{t - 12} PM"
-    end
+    time_12h(t)
   end
 
   def end_time_to_12h
     t = self.end_time
+    time_12h(t)
+  end
+
+  def time_12h(t)
     case t
-    when 0..11
+    when 0
+      "12 AM"
+    when 1..11
       "#{t} AM"
-    when 12..23
+    when 12
+      "12 PM"
+    when 13..23
       "#{t - 12} PM"
     end
   end
-
 
 end
