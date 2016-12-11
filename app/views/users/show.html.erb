@@ -50,7 +50,7 @@
         <% if l.time < Time.now %>
         <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
         <%= "Date & Time: #{l.time} | " %>
-        <%= link_to "View Lesson", lesson_path(l.id) %><br>          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <%= link_to "View Lesson", lesson_path(l.id) %><br>
         <% end %>
       <% end %>
 
