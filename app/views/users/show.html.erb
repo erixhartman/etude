@@ -6,19 +6,26 @@
     <h3>Your upcoming lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
         <% if l.time > Time.now %>
+        <ul>
+          <li>
           <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-          <%= "Date & Time: #{l.time} | " %>
+          <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
           <%= "For $#{l.teacher.price} per hour" %>
-          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+          <button><%= link_to "View Lesson", lesson_path(l.id) %></button></li>
+        </ul>
         <% end %>
       <% end %>
 
     <h3>Your past lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
         <% if l.time < Time.now %>
+        <ul>
+          <li>
           <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-          <%= "Date & Time: #{l.time} | " %>
-          <%= "For $#{l.teacher.price} per hour" %><br>
+          <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
+          <%= "For $#{l.teacher.price} per hour" %>
+          </li>
+        </ul>
         <% end %>
       <% end %>
 
@@ -42,17 +49,25 @@
       <h3>Your lessons as a teacher</h3>
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time > Time.now %>
+        <ul>
+          <li>
           <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-          <%= "Date & Time: #{l.time} | " %>
-          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+          <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
+          <button><%= link_to "View Lesson", lesson_path(l.id) %></button>
+          </li>
+        </ul>
         <% end %>
       <% end %>
 
     <h3>Your past lessons as a teacher</h3>
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
-        <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-        <%= "Date & Time: #{l.time}" %><br>
+        <ul>
+          <li>
+          <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
+          <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %>
+        </li>
+      </ul>
         <% end %>
       <% end %>
 
