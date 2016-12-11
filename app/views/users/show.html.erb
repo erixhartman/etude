@@ -1,5 +1,7 @@
 <% if current_user != nil %>
+
   <% if current_user.student %>
+
     <% if current_user.student.lessons.length > 0 %>
     <h3>Your upcoming lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
@@ -10,6 +12,7 @@
           <%= link_to "View Lesson", lesson_path(l.id) %><br>
         <% end %>
       <% end %>
+
     <h3>Your past lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
         <% if l.time < Time.now %>
@@ -19,6 +22,7 @@
           <%= link_to "View Lesson", lesson_path(l.id) %><br>
         <% end %>
       <% end %>
+
     <% else %>
     <h3>You have not booked any lessons!</h3>
     <% end %>
@@ -40,6 +44,7 @@
           <%= link_to "View Lesson", lesson_path(l.id) %><br>
         <% end %>
       <% end %>
+
     <h3>Your past lessons as a teacher</h3>
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
@@ -48,13 +53,15 @@
         <%= link_to "View Lesson", lesson_path(l.id) %><br>          <%= link_to "View Lesson", lesson_path(l.id) %><br>
         <% end %>
       <% end %>
-      
+
     <% else %>
     <h3>No booked lessons upcoming</h3>
     <% end %>
+
     <% else %>
     <h3>Please select whether you'd like to learn or teach!</h3>
   <% end %>
+
 <% else %>
 <!--Doesn't Work Yet  -->
 <h3>Please log in!</h3>
