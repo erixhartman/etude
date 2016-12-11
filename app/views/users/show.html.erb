@@ -3,10 +3,12 @@
     <% if current_user.student.lessons.length > 0 %>
       <h3>Your lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
-        <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-        <%= "Date & Time: #{l.time} | " %>
-        <%= "For $#{l.teacher.price} per hour" %>
-        <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <% if l.time > Time.now %>
+          <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
+          <%= "Date & Time: #{l.time} | " %>
+          <%= "For $#{l.teacher.price} per hour" %>
+          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <% end %>
       <% end %>
     <% else %>
     <h3>You have no upcoming lessons!</h3>
@@ -23,9 +25,11 @@
     <% if @teacher.lessons.length != 0  %>
       <h3>Your lessons as a teacher</h3>
       <% current_user.teacher.lessons.each do |l| %>
-        <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-        <%= "Date & Time: #{l.time} | " %>
-        <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <% if l.time > Time.now %>
+          <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
+          <%= "Date & Time: #{l.time} | " %>
+          <%= link_to "View Lesson", lesson_path(l.id) %><br>
+        <% end %>
       <% end %>
     <% else %>
     <h3>No booked lessons upcoming</h3>
