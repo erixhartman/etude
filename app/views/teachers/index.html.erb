@@ -1,7 +1,7 @@
 <h2>Subjects</h2>
 <ul>
 <% @teachers.select("subject").group("subject").each do |t| %>
-  <li><p><%= t.subject %></p></li>
+  <li><p><%= link_to t.subject %></p></li>
 <% end %>
 </ul>
 
