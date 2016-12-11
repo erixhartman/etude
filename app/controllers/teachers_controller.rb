@@ -1,6 +1,7 @@
 class TeachersController < ApplicationController
   def index
     @teachers = Teacher.all
+    @subjects = @teachers.select("subject").group("subject")
   end
 
   def new
