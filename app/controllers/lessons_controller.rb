@@ -25,8 +25,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
-    redirect_to root_path
-    #TODO redirect_to a user profile page rather than root?
+    redirect_to user_path
   end
 
   def show
