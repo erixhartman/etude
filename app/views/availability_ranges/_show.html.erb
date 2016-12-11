@@ -10,7 +10,7 @@
     <td><%= "#{r.weekday_name}" %></td>
     <td><%= "#{r.start_time_to_12h}" %></td>
     <td><%= "#{r.end_time_to_12h}" %></td>
-  <% if current_user.id == @teacher.user_id %>
+  <% if current_user !=nil && current_user.id == @teacher.user_id %>
     <td> <%= link_to "Edit", edit_availability_range_path(r.id) %> </td>
     <% end %>
   </tr>
