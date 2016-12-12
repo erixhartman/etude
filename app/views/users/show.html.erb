@@ -40,6 +40,7 @@
     <% end %>
 <!-- Teacher section starts here -->
   <% elsif current_user.teacher %>
+    <%= link_to "Edit Profile", edit_teacher_path %>
     <% if @teacher.availability_ranges.count > 0 %>
       <%= render 'availability_ranges/show' %>
     <% else %>
