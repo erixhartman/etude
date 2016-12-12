@@ -1,6 +1,6 @@
-<div class="main">
+<section id="main">
+  <section id="subjects">
   <h2>Subjects</h2>
-  <div class="subjects">
     <ul>
     <% @subjects.each do |s| %>
       <div class="subject">
@@ -8,17 +8,21 @@
       </div>
     <% end %>
     </ul>
-  </div>
+  </section>
 
+  <section id="teachers">
   <h2>Teachers</h2>
-  <div class="teachers">
     <ul>
     <% @teachers.each do |t| %>
-      <div class="teacher">
-        <img src="<%= t.picture %>" alt="">
-        <p><%= link_to "#{t.first_name} #{t.last_name} #{t.subject} $#{t.price}", teacher_url(t.id) %></p>
-      </div>
+      <%= link_to teacher_url(t.id) do %>
+        <div class="teacher">
+          <img src="<%= t.picture %>" alt="">
+          <p class="teacher-name"><%=  "#{t.first_name} #{t.last_name}" %></p>
+          <p class="teacher-subject"><%=  "#{t.subject} " %></p>
+          <p class="teacher-price"><%=  "$#{t.price} per hour" %></p>
+        </div>
+      <% end %>
     <% end %>
     </ul>
-  </div>
-</div>
+  </section>
+</section>
