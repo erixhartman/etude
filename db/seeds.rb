@@ -1,9 +1,37 @@
+subjects = ['Spanish', 'Guitar', 'French', 'Drums', 'Recorder', 'Samba', 'Welding',
+  'Woodworking', 'Scrapbooking', 'Knitting', 'Korean', 'Cooking', 'Karate', 'Bridge',
+  'Fishing', 'Waterskiing', 'Kiteboarding', 'Trombone', 'Trumpet', 'Boxing'
+]
+
+firstnames = [
+  'Dinorah', 'Aleta', 'Carola', 'Chiquita', 'Kia', 'Tawny', 'Su', 'Kristan', 'Katia', 'Ha',
+  'Claris', 'Lisabeth', 'Latoya', 'Krystin', 'Alexandria', 'Anya', 'Betty', 'Verena', 'Jada',
+  'Nydia', 'Cordelia', 'Halley', 'Stephany', 'Bunny', 'Alta', 'Laci', 'Leah', 'Yanira',
+  'Bobette', 'Shellie', 'Geraldine', 'Ozie', 'Theda', 'Jacquiline', 'Yoshiko', 'Miranda',
+  'Filomena', 'Agripina', 'Jaimie', 'Susanna', 'Karey', 'Allene', 'Effie', 'Bee', 'Debi',
+  'Dominic', 'Allen', 'Mohammed', 'Gino', 'Ervin', 'Berry', 'Pedro', 'Lawerence', 'Junior',
+  'Kareem', 'Beau', 'Chester', 'Guillermo', 'Ismael', 'Mose', 'Royce', 'Jimmie', 'Hiram',
+  'Jamar', 'Ian', 'Winston', 'Kelley', 'Jimmy', 'Lionel', 'Josue', 'Reid', 'Colby', 'Hank',
+  'Rufus', 'Winfred', 'Kieth', 'Ezequiel', 'Steven', 'Miles', 'John', 'Leonard', 'Rusty',
+  'Quinton', 'Darnell', 'Woodrow', 'Forest', 'Oscar', 'Alfredo', 'Dante', 'Donovan', 'Rickie',
+  'Lane', 'Mauricio', 'Luke', 'Lawrence', 'Elia', 'Tama', 'Tessie', 'Fiona', 'Aimee'
+]
+
+lastnames = [
+  'Lemon', 'Shaffer', 'Jurek', 'Deering', 'Hyre', 'Kuck', 'Mitchem', 'Sybert', 'Santelli',
+  'Riendeau', 'Lomanto', 'Devens', 'Rancourt', 'Trudel', 'Pape', 'Autin', 'Pascucci',
+  'Graydon', 'Topper', 'Schley', 'Darbonne', 'Cosper', 'Minchew', 'Jaynes', 'Phares',
+  'Laford', 'Dreyer', 'Larin', 'Hanus', 'Woodham', 'Lehmann', 'Brito', 'Standard',
+  'Delapena', 'Sires', 'Samford', 'Bagley', 'Charon', 'Claflin', 'Camilleri', 'Fitting',
+  'Vassar', 'Durling', 'Lasso', 'Letcher', 'Deems', 'Shrock', 'Yeldell', 'Clampitt', 'Eaves'
+]
+
 # Create teacher users
 teacherusers = [
-  { first_name: "Eric", last_name: "Hartman", subject: 'Spanish' },
-  { first_name: "Luke", last_name: "Plourde", subject: 'Spanish' },
-  { first_name: "Ian", last_name: "Russell", subject: 'Guitar' },
-  { first_name: "Mike", last_name: "Schwartze", subject: 'Guitar' }
+  { first_name: "Eric", last_name: "Hartman", subject: subjects[rand(0..subjects.count)] },
+  { first_name: "Luke", last_name: "Plourde", subject: subjects[rand(0..subjects.count)] },
+  { first_name: "Ian", last_name: "Russell", subject: subjects[rand(0..subjects.count)] },
+  { first_name: "Mike", last_name: "Schwartze", subject: subjects[rand(0..subjects.count)] }
 ]
 
 x = 0
@@ -31,10 +59,10 @@ teacherusers.each do
 end
 
 # Create Student users
-4.times do |x|
+15.times do |x|
   User.create(
-    first_name: "User#{x}",
-    last_name: "Smith",
+    first_name: "#{firstnames[rand(0..firstnames.count)]}",
+    last_name: "#{lastnames[rand(0..lastnames.count)]}",
     email: "user#{x}@user.com",
     password: "123",
     password_confirmation: "123"
@@ -58,10 +86,10 @@ teachers.each do |t|
     weekday: x
     )
     # Create a bunch of random lesons
-    10.times do
+    100.times do
       Lesson.create(
-      time: Time.new(2017, rand(2..5), (rand(1..25)), (start_time + 1), 0, 0),
-      student_id: rand(1..4),
+      time: Time.new(rand(2016..2017), rand(2..12), (rand(1..28)), (start_time + 1), 0, 0),
+      student_id: rand(1..Student.all.count),
       teacher_id: t
       )
     end
