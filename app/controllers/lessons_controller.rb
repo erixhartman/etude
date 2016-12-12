@@ -6,13 +6,11 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @student = Student.find_by(user_id: @user.id)
     @teacher = Teacher.find(params[:teacher_id])
     @lesson = Lesson.new(
       teacher_id: @teacher.id,
       time: lesson_params[:time],
-      student_id: @student.id
+      student_id: current_user.student.id
     )
 
     if @lesson.save
@@ -37,6 +35,5 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:time)
   end
-
 
 end

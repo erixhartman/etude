@@ -16,9 +16,8 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      @user = current_user
-      if @user.teacher
-        @teacher = Teacher.find_by(user_id: @user.id)
+      if current_user.teacher
+        @teacher = Teacher.find_by(user_id: current_user.id)
         @availability_ranges = @teacher.availability_ranges.sort { |a,b| a.weekday <=> b.weekday }
       end
     end
