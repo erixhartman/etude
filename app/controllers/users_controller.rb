@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       @user = current_user
       if @user.teacher
         @teacher = Teacher.find_by(user_id: @user.id)
+        @availability_ranges = @teacher.availability_ranges.sort { |a,b| a.weekday <=> b.weekday }
       end
     end
   end
