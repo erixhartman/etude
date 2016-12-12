@@ -16,4 +16,32 @@
 
 * {
   border: 1px solid grey;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+/********************
+      NAV BAR
+*********************/
+
+header {
+  height: 100%;
+  width: 100%;
+  background: lavender;
+  overflow: auto;
+}
+
+header h1 {
+  display: inline
+}
+
+#profile-links {
+  float: right;
 }
