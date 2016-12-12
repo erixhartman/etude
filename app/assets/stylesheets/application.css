@@ -16,5 +16,40 @@
 
 table tr, td, th {
   border: 1px solid grey;
+}
 
+.teacher img {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 35%;
+}
+
+.teacher {
+  background-color: lightgrey;
+  padding: 5px;
+  border: 1px solid grey;
+  display: block;
+  width: 300px;
+}
+
+.teacher p {
+  float: right;
+}
+
+.subjects ul {
+  list-style: none;
+  padding-left: 25px;
+}
+
+.teachers ul {
+  padding-left: 25px;
+}
+
+.subject {
+  width: 150px;
+  margin: 0px;
+  display: inline-block;
+  border: 1px solid grey;
+  text-align: center;
 }
