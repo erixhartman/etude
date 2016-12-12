@@ -1,28 +1,26 @@
-<section id="main">
-  <section id="subjects">
-  <h2>Subjects</h2>
-    <ul>
-    <% @subjects.each do |s| %>
-      <div class="subject">
-        <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
+<section id="subjects">
+<h2>Subjects</h2>
+  <ul>
+  <% @subjects.each do |s| %>
+    <div class="subject">
+      <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
+    </div>
+  <% end %>
+  </ul>
+</section>
+
+<section id="teachers">
+<h2>Teachers</h2>
+  <ul>
+  <% @teachers.each do |t| %>
+    <%= link_to teacher_url(t.id) do %>
+      <div class="teacher">
+        <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture">
+        <p class="teacher-name"><%=  "#{t.first_name} #{t.last_name}" %></p>
+        <p class="teacher-subject"><%=  "#{t.subject} " %></p>
+        <p class="teacher-price"><%=  "$#{t.price} per hour" %></p>
       </div>
     <% end %>
-    </ul>
-  </section>
-
-  <section id="teachers">
-  <h2>Teachers</h2>
-    <ul>
-    <% @teachers.each do |t| %>
-      <%= link_to teacher_url(t.id) do %>
-        <div class="teacher">
-          <img src="<%= t.picture %>" alt="">
-          <p class="teacher-name"><%=  "#{t.first_name} #{t.last_name}" %></p>
-          <p class="teacher-subject"><%=  "#{t.subject} " %></p>
-          <p class="teacher-price"><%=  "$#{t.price} per hour" %></p>
-        </div>
-      <% end %>
-    <% end %>
-    </ul>
-  </section>
+  <% end %>
+  </ul>
 </section>
