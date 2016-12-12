@@ -1,13 +1,24 @@
-<h2>Subjects</h2>
-<ul>
-<% @subjects.each do |s| %>
-  <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
-<% end %>
-</ul>
+<div class="main">
+  <h2>Subjects</h2>
+  <div class="subjects">
+    <ul>
+    <% @subjects.each do |s| %>
+      <div class="subject">
+        <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
+      </div>
+    <% end %>
+    </ul>
+  </div>
 
-<h2>Teachers</h2>
-<ul>
-<% @teachers.each do |t| %>
-  <li><p><%= link_to "#{t.first_name} #{t.last_name} #{t.subject} $#{t.price}", teacher_url(t.id) %></p></li>
-<% end %>
-</ul>
+  <h2>Teachers</h2>
+  <div class="teachers">
+    <ul>
+    <% @teachers.each do |t| %>
+      <div class="teacher">
+        <img src="<%= t.picture %>" alt="">
+        <p><%= link_to "#{t.first_name} #{t.last_name} #{t.subject} $#{t.price}", teacher_url(t.id) %></p>
+      </div>
+    <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,38 +1,44 @@
-<% if current_user != nil %>
+<% if current_user == nil %>
+  <%= render 'loginmessage' %>
+<% else %>
 
+<!-- Student Section Starts Here -->
   <% if current_user.student %>
 
+    <!-- Showing Students Lessons if they have any -->
     <% if current_user.student.lessons.length > 0 %>
-    <h3>Your upcoming lessons as a student</h3>
+    <!-- Showing lessons that are in the future -->
+      <h3>Your upcoming lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
         <% if l.time > Time.now %>
-        <ul>
-          <li>
-          <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-          <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
-          <%= "For $#{l.teacher.price} per hour" %>
-          <button><%= link_to "View Lesson", lesson_path(l.id) %></button></li>
-        </ul>
+          <ul>
+            <li>
+              <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
+              <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
+              <%= "For $#{l.teacher.price} per hour" %>
+              <button><%= link_to "View Lesson", lesson_path(l.id) %></button>
+            </li>
+          </ul>
         <% end %>
       <% end %>
-
-    <h3>Your past lessons as a student</h3>
+      <!-- Showing Lessons that are in the past -->
+      <h3>Your past lessons as a student</h3>
       <% current_user.student.lessons.each do |l| %>
         <% if l.time < Time.now %>
-        <ul>
-          <li>
-          <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-          <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
-          <%= "For $#{l.teacher.price} per hour" %>
-          </li>
-        </ul>
+          <ul>
+            <li>
+              <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
+              <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
+              <%= "For $#{l.teacher.price} per hour" %>
+            </li>
+          </ul>
         <% end %>
       <% end %>
-
+    <!-- Showing that a student hasn't booked any lessons -->
     <% else %>
     <h3>You have not booked any lessons!</h3>
     <% end %>
-
+<!-- Teacher section starts here -->
   <% elsif current_user.teacher %>
     <% if @teacher.availability_ranges.count > 0 %>
       <%= render 'availability_ranges/show' %>
@@ -78,8 +84,4 @@
     <% else %>
     <h3>Please select whether you'd like to learn or teach!</h3>
   <% end %>
-
-<% else %>
-<!--Doesn't Work Yet  -->
-<h3>Please log in!</h3>
 <% end %>

@@ -1,6 +1,12 @@
-<h1>Lesson Show Page</h1>
-<%= "Student: #{@lesson.student.first_name} #{@lesson.student.last_name}"%>
-<%= "#{@lesson.teacher.subject} with #{@lesson.teacher.first_name} #{@lesson.teacher.last_name} | " %>
-<%= "Date & Time: #{@lesson.time} | " %>
-<%= "For $#{@lesson.teacher.price} per hour" %>
-<%= link_to "Cancel Lesson", lesson_path(@lesson.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %><br>
+<% if current_user == nil %>
+  <%= render 'users/loginmessage' %>
+<% else %>
+
+  <h1>Lesson Show Page</h1>
+  <%= "Student: #{@lesson.student.first_name} #{@lesson.student.last_name}"%>
+  <%= "#{@lesson.teacher.subject} with #{@lesson.teacher.first_name} #{@lesson.teacher.last_name} | " %>
+  <%= "Date & Time: #{@lesson.time} | " %>
+  <%= "For $#{@lesson.teacher.price} per hour" %>
+  <%= link_to "Cancel Lesson", lesson_path(@lesson.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %><br>
+
+<% end %>
