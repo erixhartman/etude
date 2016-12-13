@@ -5,14 +5,28 @@
     <th>Start Time</th>
     <th>End Time</th>
   </tr>
-  <% @teacher.availability_ranges.each do |r| %>
+<% (0..6).to_a.each do |d| %>
   <tr>
-    <td><%= "#{r.weekday_name}" %></td>
-    <td><%= "#{r.start_time_to_12h}" %></td>
-    <td><%= "#{r.end_time_to_12h}" %></td>
-  <% if current_user && current_user.id == @teacher.user_id %>
-    <td> <%= link_to "Edit", edit_availability_range_path(r.id) %> <%= link_to "Delete", availability_range_path(r.id), method: :delete, data: {confirm: "Are you sure you want to delete?"}   %> </td>
+    <% if @teacher.availability_ranges.find_by(weekday: d) %>
+    <% t = @teacher.availability_ranges.find_by(weekday: d) %>
+      <td><%= "#{t.weekday_name}" %></td>
+      <td><%= "#{t.start_time_to_12h}" %></td>
+      <td><%= "#{t.end_time_to_12h}" %></td>
+        <% if current_user && current_user.id == @teacher.user_id %>
+          <td><button><%= link_to "Edit", edit_availability_range_path(t.id) %></button>
+            <button><%= link_to "Delete", availability_range_path(t.id), method: :delete, data: {confirm: "Are you sure you want to delete?"}%></button>
+          </td>
+        <% end %>
+    <% else %>
+      <% @availability_range = AvailabilityRange.new %>
+      <%= form_for @availability_range do |f| %>
+        <td><%= "#{Date::DAYNAMES[d]}" %></td>
+        <%= f.hidden_field(:weekday, value: d)%>
+        <td><%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %></td>
+        <td><%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %></td>
+        <td><span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span></td>
+      <% end %>
     <% end %>
   </tr>
-  <% end %>
+<% end %>
 </table>
