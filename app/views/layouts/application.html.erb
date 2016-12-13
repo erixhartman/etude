@@ -19,26 +19,28 @@
   </head>
 
   <body>
-    <header>
-      <h1><%= link_to 'Étude', root_path %></h1>
-      <div id="profile-links">
+    <nav>
+      <div class="nav-wrapper">
+      <div class="brand-logo"><%= link_to 'Étude', root_path %></div>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if current_user %>
         <% if current_user.teacher %>
-          <%= 'Hello Teacher ' + current_user.first_name %>
+          <li><%= 'Hello Teacher ' + current_user.first_name %></li>
         <% elsif current_user.student %>
-          <%= 'Hello Student ' + current_user.first_name %>
+          <li><%= 'Hello Student ' + current_user.first_name %></li>
         <% else %>
-          <%= link_to "I want to teach", new_teacher_path %>
-          <%= link_to "I want to learn", new_student_path %>
+          <li><%= link_to "I want to teach", new_teacher_path %></li>
+          <li><%= link_to "I want to learn", new_student_path %></li>
         <% end %>
-        <%= link_to 'Log Out', session_path(current_user.id), :method => :delete %>
-        <%= link_to 'My Profile', user_path(current_user.id) %>
+        <li><%= link_to 'Log Out', session_path(current_user.id), :method => :delete %></li>
+        <li><%= link_to 'My Profile', user_path(current_user.id) %></li>
       <% else %>
-        <%= link_to 'Log In', new_session_path %>
-        <%= link_to 'Sign Up', new_user_path %>
+        <li><%= link_to 'Log In', new_session_path %></li>
+        <li><%= link_to 'Sign Up', new_user_path %></li>
       <% end %>
+      </ul>
       </div>
-    </header>
+    </nav>
     <section id="main">
       <%= yield %>
     </section>
