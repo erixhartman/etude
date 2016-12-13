@@ -7,8 +7,8 @@
   </tr>
 <% (0..6).to_a.each do |d| %>
   <tr>
-    <% if @teacher.availability_ranges[d] %>
-    <% t = @teacher.availability_ranges[d] %>
+    <% if @teacher.availability_ranges.find_by(weekday: d) %>
+    <% t = @teacher.availability_ranges.find_by(weekday: d) %>
       <td><%= "#{t.weekday_name}" %></td>
       <td><%= "#{t.start_time_to_12h}" %></td>
       <td><%= "#{t.end_time_to_12h}" %></td>
