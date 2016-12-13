@@ -51,3 +51,16 @@ header h1 {
 #main {
   padding-left: 50px;
 }*/
+
+#subjects {
+  text-align: center;
+  overflow: auto;
+}
+.card-panel {
+  width: 250px;
+  height: 250px;
+}
+.row {
+  float: right;
+  width: 20em;
+}
