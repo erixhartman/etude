@@ -50,4 +50,7 @@ class Teacher < ApplicationRecord
     end
   end
 
+  def full_address
+    "#{self.street_address},#{self.postal_code}".gsub!(" ", "+")
+  end
 end
