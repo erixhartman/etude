@@ -49,6 +49,9 @@
     <% end %>
   </section>
 <!-- Teacher section starts here -->
+
+
+
   <% elsif current_user.teacher %>
     <%= link_to "Edit Profile", edit_teacher_path %>
     <section id='teacher-availability'>
@@ -58,20 +61,15 @@
 
     <% if @teacher.lessons.length != 0  %>
       <h3>Upcoming lessons</h3>
-      <div id="current-teacher-lessons">
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time > Time.now %>
-        <ul>
-          <div class="current-teacher-lessons">
+          <ul class="collapsible" data-collapsible="accordion">
             <li>
-              <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-              <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
-              <button><%= link_to "View Lesson", lesson_path(l.id) %></button>
+              <div class="collapsible-header"><i class="material-icons">filter_drama</i><%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %></div>
+              <div class="collapsible-body"><p>  <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
+              <button><%= link_to "View Lesson", lesson_path(l.id) %></button></p></div>
             </li>
-          </div>
-        </ul>
         <% end %>
-      </div>
       <% end %>
 
     <h3>Past lessons</h3>
