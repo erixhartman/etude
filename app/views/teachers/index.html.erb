@@ -5,38 +5,38 @@
   </div>
   <div class="carousel">
   <% @subjects.each do |s| %>
-      <a class="carousel-item" href="#one!">
-        <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title"><%= "#{s.subject}" %></span>
-              <br>
-              <br>
+      <a class="carousel-item" href="<%=subjects_url(:subject => s.subject)%>">
+        <div class="card light-blue darken-4">
+          <div class="valign-wrapper">
+            <div style="text-align:center;" class="card-content white-text">
+              <span class="card-title">Check out our <%= " #{s.subject} " %> Teachers!</span>
               <br>
             </div>
           </div>
+        </div>
       </a>
    <% end %>
  </div>
 </section>
-
 <section id="teachers">
-  <div class="col s10 m6">
-    <div class="container">
-      <h4>Teachers</h4>
-    </div>
-    <% @teachers.each do |t| %>
-    <div class="card horizontal">
-      <div class="card-image"><img src="<%= t.picture %>"></div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <p><strong>Teaches: </strong><%= "#{t.subject}" %></p><br>
-            <p>Hourly Price: <strong><%= "$ #{t.price}" %></strong></p>
-          </div>
-          <div class="card-action">
-            <%= link_to "#{t.first_name} #{t.last_name}", teacher_path(t) %>
+  <div class="row">
+      <div class="col s6">
+      <div class="container">
+      <% @teachers.each do |t| %>
+      <div class="card horizontal blue lighten-5">
+        <div class="card-image"><img style="border-radius:50%;" src="<%= t.picture %>"></div>
+          <div class="card-stacked">
+            <div class="card-action">
+              <%= link_to "#{t.first_name} #{t.last_name}", teacher_path(t) %>
+            </div>
+            <div class="card-content">
+              <p><%= "#{t.subject} " %><br /><strong><%= "$ #{t.price} " %></strong>per hr</p>
+            </div>
           </div>
         </div>
+        <% end %>
       </div>
-  <% end %>
+      </div>
+
   </div>
 </section>
