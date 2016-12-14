@@ -19,29 +19,50 @@
   </head>
 
   <body>
-    <header>
-      <h1><%= link_to 'Étude', root_path %></h1>
-      <div id="profile-links">
+    <nav class="black" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Étude</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="<%= root_path %>">Main</a></li>
+          <% unless current_user %>
+            <li><%= link_to 'Sign Up', new_user_path %></li>
+            <li><%= link_to 'Log In', new_session_path %></li>
+          <% end %>
+          <% if current_user %>
+          <li><%= "Hello #{current_user.first_name}!" %></li>
+          <li><a href="<%= user_path(current_user.id) %>"><%= "Profile" %></a></li>
+          <li><%= link_to 'Log Out', session_path(current_user.id), :method => :delete %></li>
+          <% end %>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="<%= root_path %>">Main</a></li>
+          <% unless current_user %>
+            <li><%= link_to 'Sign Up', new_user_path %></li>
+            <li><%= link_to 'Log In', new_session_path %></li>
+          <% end %>
+          <% if current_user %>
+          <li><a href="<%= user_path(current_user.id) %>"><%= "Your Profile" %></a></li>
+          <li><%= link_to 'Log Out', session_path(current_user.id), :method => :delete %></li>
+          <% end %>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+      <% link_to 'Étude', root_path %>
       <% if current_user %>
         <% if current_user.teacher %>
-          <%= 'Hello ' + current_user.first_name %>
-        <% elsif current_user.student %>
-          <%= 'Hello ' + current_user.first_name %>
-        <% else %>
-          <%= link_to "I want to teach", new_teacher_path %>
-          <%= link_to "I want to learn", new_student_path %>
+          <% link_to "I want to teach", new_teacher_path %>
+          <% link_to "I want to learn", new_student_path %>
         <% end %>
-        <%= link_to 'Log Out', session_path(current_user.id), :method => :delete %>
-        <%= link_to 'My Profile', user_path(current_user.id) %>
+
       <% else %>
-        <%= link_to 'Log In', new_session_path %>
-        <%= link_to 'Sign Up', new_user_path %>
+        <% link_to 'Log In', new_session_path %>
+        <% link_to 'Sign Up', new_user_path %>
       <% end %>
-      </div>
-    </header>
-    <section id="main">
+
       <%= yield %>
-    </section>
+
+
     <footer> Étude </footer>
   </body>
 </html>
