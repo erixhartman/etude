@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 $(document).ready(function() {
-  $('select').material_select();
   $('.parallax').parallax();
+  $('select').material_select();
+  $('.button-collapse').sideNav();
 });
