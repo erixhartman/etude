@@ -1,22 +1,26 @@
 
+<div class="parallax-container">
+  <div class="parallax"><img style="max-width:100%; height:auto;" src="http://neurobonkers.com/wp-content/uploads/2014/12/Learning-how-to-learn.jpg"></div>
+</div>
+
+<div class="container">
 <section id="subjects">
   <div class="container">
     <h4>Subjects</h4>
   </div>
   <div class="carousel">
-  <% @subjects.each do |s| %>
-      <a class="carousel-item" href="<%=subjects_url(:subject => s.subject)%>">
-        <div class="card light-blue darken-4">
-          <div class="valign-wrapper">
-            <div style="text-align:center;" class="card-content white-text">
-              <span class="card-title">Check out our <%= " #{s.subject} " %> Teachers!</span>
-              <br>
-            </div>
-          </div>
-        </div>
-      </a>
-   <% end %>
- </div>
+    <% @teachers.each do |t| %>
+    <a class="carousel-item" href="<%= teacher_path(t) %>">
+<!-- Took from here: -->
+      <div class="card horizontal blue lighten-5">
+        <div class="card-image"><img style="border-radius:50%; margin:5px;" src="<%= t.picture %>"></div>
+      <p><%= "#{t.first_name} #{t.last_name}" %></p>
+    </div>
+<!-- To here Out -->
+    </a>
+    <% end %>
+  </div>
+
 </section>
 <section id="teachers">
   <div class="row">
@@ -40,3 +44,5 @@
 
   </div>
 </section>
+
+</div>

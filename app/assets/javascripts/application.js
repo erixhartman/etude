@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 $(document).ready(function() {
+  $('.parallax').parallax();
   $('select').material_select();
   $('.carousel').carousel();
 });
