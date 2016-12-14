@@ -48,12 +48,12 @@ teacherusers.each do
   Teacher.create(
     price: rand(20..50),
     subject: subject,
-    postal_code: "M5V 3M1",
+    postal_code: "M5H 1K5",
     user_id: x + 1,
     bio: "I'm a very good #{subject.downcase} teacher...",
     picture: "http://robohash.org/#{rand(1..99999)}",
     teaching_since: Time.now,
-    street_address: "#{rand(50..8000)} Yonge St",
+    street_address: "220 King Street W",
     city: "Toronto",
     province: "ON"
   )
