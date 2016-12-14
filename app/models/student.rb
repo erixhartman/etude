@@ -14,4 +14,8 @@ class Student < ApplicationRecord
   def email
     User.find(self.user_id).email
   end
+
+  def full_address
+    "#{self.street_address},#{self.postal_code}".gsub!(" ", "+")
+  end
 end
