@@ -1,11 +1,15 @@
 
 <section id="subjects">
-<h2>Subjects</h2>
+  <div class="row">
+    <div class="col offset-s5">
+      <h2>Subjects</h2>
+    </div>
+  </div>
 <div class="container">
  <div class="row">
    <% @subjects.each do |s| %>
    <div class="col s4">
-    <div class="card-panel">
+    <div class="card-panel teal">
       <span class="white-text"><%= link_to s.subject, subjects_url(:subject => s.subject) %></span>
      </div>
    </div>
@@ -15,7 +19,11 @@
 </section>
 
 <section id="teachers">
-<h2>Teachers</h2>
+  <div class="row">
+    <div class="col offset-s5">
+      <h2>Teachers</h2>
+    </div>
+  </div>
   <ul>
   <% @teachers.each do |t| %>
     <%= link_to teacher_url(t.id) do %>

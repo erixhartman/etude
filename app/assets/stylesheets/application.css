@@ -18,8 +18,23 @@
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
+.card-panel a:link {
+    color: white;
+}
+
+/* visited link */
+.card-panel a:visited {
+    color: white;
+}
+
+/* mouse over link */
+.card-panel a:hover {
+    color: white;
+}
+
+/* selected link */
+.card-panel a:active {
+    color: white;
 }
 
 li {
