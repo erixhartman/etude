@@ -67,7 +67,10 @@ end
     last_name: "#{lastnames[rand(0..lastnames.count)]}",
     email: "user#{x}@user.com",
     password: "123",
-    password_confirmation: "123"
+    password_confirmation: "123",
+    street_address: "1 Bloor Ave W",
+    city: "Toronto",
+    postal_code: "M6H 1M9"
   )
   user = User.last
   Student.create(user_id: user.id)
