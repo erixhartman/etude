@@ -1,14 +1,14 @@
 <section id="teacher-profile-full">
-  <h3><img src="<%= @teacher.picture %>" alt="<%= @teacher.first_name %> Picture"></h3>
-  <h3><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h3>
-  <h3><%= "Subject: #{@teacher.subject}" %></h3>
-  <h3> <%= "About #{@teacher.first_name}" %></h3>
+  <h4><img src="<%= @teacher.picture %>" alt="<%= @teacher.first_name %> Picture"></h4>
+  <h4><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h4>
+  <h4><%= "Subject: #{@teacher.subject}" %></h4>
+  <h4> <%= "About #{@teacher.first_name}" %></h4>
   <p><%= "#{@teacher.bio}" %></p>
-  <h3><%= "Cost per lesson: $#{@teacher.price}" %></h3>
-  <h3><%= "Teaching since: #{@teacher.teaching_since}" %></h3>
-  <h3> <%= "#{@teacher.first_name}'s address" %></h3>
-  <h3><%= "#{@teacher.street_address}, #{@teacher.city}" %></h3>
-  <h3><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h3>
-  <h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
+  <h4><%= "Cost per lesson: $#{@teacher.price}" %></h4>
+  <h4><%= "Teaching since: #{@teacher.teaching_since}" %></h4>
+  <h4> <%= "#{@teacher.first_name}'s address" %></h4>
+  <h4><%= "#{@teacher.street_address}, #{@teacher.city}" %></h4>
+  <h4><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h4>
+  <h4><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h4>
   <%= render 'availability_ranges/show' %>
 </section>

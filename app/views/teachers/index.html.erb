@@ -1,39 +1,33 @@
 
 <section id="subjects">
-  <div class="row">
-    <div class="col offset-s5">
-      <h2>Subjects</h2>
-    </div>
+  <div class="container">
+    <h4>Subjects</h4>
   </div>
-<div class="container">
- <div class="row">
-   <% @subjects.each do |s| %>
-   <div class="col s4">
-    <div class="card-panel teal">
-      <span class="white-text"><%= link_to s.subject, subjects_url(:subject => s.subject) %></span>
-     </div>
-   </div>
+  <div class="carousel">
+  <% @subjects.each do |s| %>
+      <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/350/350/nature/"></a>
    <% end %>
  </div>
-</div>
 </section>
 
 <section id="teachers">
-  <div class="row">
-    <div class="col offset-s5">
-      <h2>Teachers</h2>
+  <div class="col s10 m6">
+    <div class="container">
+      <h4>Teachers</h4>
     </div>
-  </div>
-  <ul>
-  <% @teachers.each do |t| %>
-    <%= link_to teacher_url(t.id) do %>
-      <div class="teacher">
-        <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture">
-        <p class="teacher-name"><%=  "#{t.first_name} #{t.last_name}" %></p>
-        <p class="teacher-subject"><%=  "#{t.subject} " %></p>
-        <p class="teacher-price"><%=  "$#{t.price} per hour" %></p>
+    <% @teachers.each do |t| %>
+    <div class="card horizontal">
+      <div class="card-image"><img src="<%= t.picture %>"></div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p><strong>Teaches: </strong><%= "#{t.subject}" %></p><br>
+            <p>Hourly Price: <strong><%= "$ #{t.price}" %></strong></p>
+          </div>
+          <div class="card-action">
+            <%= link_to "#{t.first_name} #{t.last_name}", teacher_path(t) %>
+          </div>
+        </div>
       </div>
-    <% end %>
   <% end %>
-  </ul>
+  </div>
 </section>
