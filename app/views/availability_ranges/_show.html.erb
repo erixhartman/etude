@@ -1,32 +1,32 @@
-<h3>Availability</h3>
-<table>
-  <tr>
-    <th>Day</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-  </tr>
+<div class="container">
+  <div class="row">
+    <div class="col s2">Day</div>
+    <div class="col s4">Start Time</div>
+    <div class="col s4">End Time</div>
+  </div>
+
 <% (0..6).to_a.each do |d| %>
-  <tr>
+  <div class="row">
     <% if @teacher.availability_ranges.find_by(weekday: d) %>
     <% t = @teacher.availability_ranges.find_by(weekday: d) %>
-      <td><%= "#{t.weekday_name}" %></td>
-      <td><%= "#{t.start_time_to_12h}" %></td>
-      <td><%= "#{t.end_time_to_12h}" %></td>
+      <div class="col s2"><%= "#{t.weekday_name}" %></div>
+      <div class="col s4"><%= "#{t.start_time_to_12h}" %></div>
+      <div class="col s4"><%= "#{t.end_time_to_12h}" %></div>
         <% if current_user && current_user.id == @teacher.user_id %>
-          <td><button><%= link_to "Edit", edit_availability_range_path(t.id) %></button>
+          <div class="col s2"><button><%= link_to "Edit", edit_availability_range_path(t.id) %></button>
             <button><%= link_to "Delete", availability_range_path(t.id), method: :delete, data: {confirm: "Are you sure you want to delete?"}%></button>
-          </td>
+          </div>
         <% end %>
     <% else %>
       <% @availability_range = AvailabilityRange.new %>
       <%= form_for @availability_range do |f| %>
-        <td><%= "#{Date::DAYNAMES[d]}" %></td>
-        <%= f.hidden_field(:weekday, value: d)%>
-        <td><%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %></td>
-        <td><%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %></td>
-        <td><span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span></td>
+        <div class="col s2"><%= "#{Date::DAYNAMES[d]}" %> <%= f.hidden_field(:weekday, value: d)%></div>
+        <div class="col s4"><%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %></div>
+        <div class="col s4"><%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %></div>
+        <div class="col s2"><span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span></div>
       <% end %>
     <% end %>
-  </tr>
+  </div>
 <% end %>
-</table>
+
+</div>
