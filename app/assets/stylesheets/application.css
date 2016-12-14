@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ /*.parallax-container img{
+       max-height: 300px;
+       width: auto;
+     }*/
+
 * {
   box-sizing: border-box;
 }
