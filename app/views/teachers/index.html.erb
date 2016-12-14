@@ -53,9 +53,7 @@
           </p>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
 
@@ -69,36 +67,35 @@
 
 <div class="container">
   <div class="section">
-
     <div class="row">
       <div class="col s12 center">
         <h3><i class="mdi-content-send brown-text"></i>Subjects</h3>
         <ul>
         <% @subjects.each do |s| %>
-          <div class="light">
-            <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
+          <div class="chip">
+            <%= link_to s.subject, subjects_url(:subject => s.subject) %>
           </div>
         <% end %>
         </ul>
       </div>
     </div>
-
   </div>
 </div>
 
-
-<section id="teachers">
-<h2>Teachers</h2>
-  <ul>
-  <% @teachers.each do |t| %>
-    <%= link_to teacher_url(t.id) do %>
-      <div class="teacher">
-        <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture">
-        <p class="teacher-name"><%=  "#{t.first_name} #{t.last_name}" %></p>
-        <p class="teacher-subject"><%=  "#{t.subject} " %></p>
-        <p class="teacher-price"><%=  "$#{t.price} per hour" %></p>
-      </div>
-    <% end %>
-  <% end %>
-  </ul>
-</section>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+      <h5>Featured Teachers</h5>
+      <ul class="collection">
+        <% @teachersfeat.each do |t| %>
+        <li class="collection-item avatar">
+          <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture" class="circle">
+          <span class="title"><%= "#{t.first_name} #{t.last_name}" %></span>
+          <p class="teacher-subject"><%=  "#{t.subject} " %></p>
+          <p class="teacher-price"><%=  "$ #{t.price} " %></p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i><i class="material-icons">grade</i><i class="material-icons">grade</i></a>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
