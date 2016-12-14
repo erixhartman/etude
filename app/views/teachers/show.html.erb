@@ -12,3 +12,5 @@
   <h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
   <%= render 'availability_ranges/show' %>
 </section>
+
+<iframe src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.secrets.maps_key %>&q=<%= @teacher.full_address %>"  width="600" height="450" frameborder="0"></iframe>
