@@ -1,12 +1,17 @@
 <% if current_user == nil %>
   <%= render 'users/loginmessage' %>
-<% else %>
+<% elsif current_user.teacher && current_user.teacher.id == @lesson.teacher_id || current_user.student && current_user.student.id == @lesson.student_id %>
 
-  <h1>Lesson Show Page</h1>
   <%= "Student: #{@lesson.student.first_name} #{@lesson.student.last_name}"%>
   <%= "#{@lesson.teacher.subject} with #{@lesson.teacher.first_name} #{@lesson.teacher.last_name} | " %>
   <%= "Date & Time: #{@lesson.time} | " %>
   <%= "For $#{@lesson.teacher.price} per hour" %>
   <%= link_to "Cancel Lesson", lesson_path(@lesson.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %><br>
 
+<% else %>
+
+  <h3>This is not your lesson</h3>
+
 <% end %>
+
+<%= console %>
