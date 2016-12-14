@@ -6,6 +6,7 @@ class Teacher < ApplicationRecord
 
   validates :subject, :postal_code, :bio, :picture, :teaching_since, :street_address, :city, :province, presence: true
   validates :price, numericality: {only_integer: true}
+  validate :teaching_since_valid
 
   def first_name
     User.find(self.user_id).first_name
@@ -40,4 +41,13 @@ class Teacher < ApplicationRecord
     end
     return true
   end
+
+  def teaching_since_valid
+    if self.teaching_since != nil
+      unless Time.now > self.teaching_since
+        errors.add(:time, 'Your "teaching since" entry must be in the past')
+      end
+    end
+  end
+
 end
