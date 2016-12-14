@@ -40,7 +40,7 @@ teacherusers.each do
   User.create(
     first_name: teacherusers[x][:first_name],
     last_name: teacherusers[x][:last_name],
-    email: "#{teacherusers[x][:first_name].downcase}@#{teacherusers[x][:first_name].downcase}.com",
+    email: "#{teacherusers[x][:first_name]}@#{teacherusers[x][:first_name]}.com",
     password: "123",
     password_confirmation: "123"
   )
@@ -50,7 +50,7 @@ teacherusers.each do
     subject: subject,
     postal_code: "M5H 1K5",
     user_id: x + 1,
-    bio: "I'm a very good #{subject.downcase} teacher...",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     picture: "http://robohash.org/#{rand(1..99999)}",
     teaching_since: Time.now,
     street_address: "220 King Street W",
@@ -121,7 +121,7 @@ id = Teacher.last.id + 1
     subject: subject,
     postal_code: "M5V 3M1",
     user_id: id,
-    bio: "I'm a very good #{subject.downcase} teacher...",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     picture: "http://robohash.org/#{rand(1..99999)}",
     teaching_since: Time.now,
     street_address: "#{rand(50..8000)} Yonge St",
