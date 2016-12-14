@@ -29,38 +29,3 @@ li {
 /********************
       NAV BAR
 *********************/
-
-/*header {
-  height: 80px;
-  width: 100%;
-  background: lavender;
-  overflow: auto;
-
-}
-
-header h1 {
-  display: inline;
-  padding-left: 20px;
-}
-
-#profile-links {
-  float: right;
-  padding-right: 20px;
-}
-
-#main {
-  padding-left: 50px;
-}*/
-
-#subjects {
-  text-align: center;
-  overflow: auto;
-}
-.card-panel {
-  width: 250px;
-  height: 250px;
-}
-.row {
-  float: right;
-  width: 20em;
-}
