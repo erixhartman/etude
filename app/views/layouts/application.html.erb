@@ -24,9 +24,9 @@
       <div id="profile-links">
       <% if current_user %>
         <% if current_user.teacher %>
-          <%= 'Hello Teacher ' + current_user.first_name %>
+          <%= 'Hello ' + current_user.first_name %>
         <% elsif current_user.student %>
-          <%= 'Hello Student ' + current_user.first_name %>
+          <%= 'Hello ' + current_user.first_name %>
         <% else %>
           <%= link_to "I want to teach", new_teacher_path %>
           <%= link_to "I want to learn", new_student_path %>

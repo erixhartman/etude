@@ -9,7 +9,7 @@
     <% if current_user.student.lessons.length > 0 %>
     <!-- Showing lessons that are in the future -->
       <section id="student-lessons">
-      <h3>Your upcoming lessons as a student</h3>
+      <h3>Upcoming lessons</h3>
       <div id="current-student-lessons">
       <% current_user.student.lessons.each do |l| %>
         <% if l.time > Time.now %>
@@ -27,7 +27,7 @@
       </div>
       <% end %>
       <!-- Showing Lessons that are in the past -->
-      <h3>Your past lessons as a student</h3>
+      <h3>Past lessons</h3>
       <div id="past-student-lessons">
       <% current_user.student.lessons.each do |l| %>
         <% if l.time < Time.now %>
@@ -57,7 +57,7 @@
     </section>
 
     <% if @teacher.lessons.length != 0  %>
-      <h3>Your lessons as a teacher</h3>
+      <h3>Upcoming lessons</h3>
       <div id="current-teacher-lessons">
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time > Time.now %>
@@ -74,7 +74,7 @@
       </div>
       <% end %>
 
-    <h3>Your past lessons as a teacher</h3>
+    <h3>Past lessons</h3>
     <div id="past-teacher-lessons">
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>

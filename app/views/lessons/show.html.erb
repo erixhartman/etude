@@ -2,7 +2,7 @@
   <%= render 'users/loginmessage' %>
 <% else %>
 
-  <h1>Lesson Show Page</h1>
+  
   <%= "Student: #{@lesson.student.first_name} #{@lesson.student.last_name}"%>
   <%= "#{@lesson.teacher.subject} with #{@lesson.teacher.first_name} #{@lesson.teacher.last_name} | " %>
   <%= "Date & Time: #{@lesson.time} | " %>
