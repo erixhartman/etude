@@ -9,8 +9,8 @@
   <%= link_to "Cancel Lesson", lesson_path(@lesson.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %><br>
 
   <iframe
-  width="450"
-  height="250"
+  width="100%"
+  height="500px"
   frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/directions?key=<%= Rails.application.secrets.maps_key %>&origin=<%= @lesson.student.full_address %>&destination=<%= @lesson.teacher.full_address %>" allowfullscreen>
 </iframe>
