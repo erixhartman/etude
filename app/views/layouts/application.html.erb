@@ -21,7 +21,7 @@
   <body>
     <nav class="black" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Étude</a>
+        <a id="logo-container" href="<%= root_path %>" class="brand-logo">Étude</a>
         <ul class="right hide-on-med-and-down">
           <li><a href="<%= root_path %>">Main</a></li>
           <% unless current_user %>
@@ -48,20 +48,8 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
-      <% link_to 'Étude', root_path %>
-      <% if current_user %>
-        <% if current_user.teacher %>
-          <% link_to "I want to teach", new_teacher_path %>
-          <% link_to "I want to learn", new_student_path %>
-        <% end %>
-
-      <% else %>
-        <% link_to 'Log In', new_session_path %>
-        <% link_to 'Sign Up', new_user_path %>
-      <% end %>
 
       <%= yield %>
-
 
     <footer> Étude </footer>
   </body>

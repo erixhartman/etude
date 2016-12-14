@@ -6,9 +6,17 @@
       <div class="row center">
         <h5 class="header col s12 white-text light">Where Freelance Teachers and Students Connect</h5>
       </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-      </div>
+      <% if current_user && current_user.student == nil && current_user.teacher == nil %>
+        <div class="row center">
+          <a href="<%= new_teacher_path %>" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Teaching</a><br /><br />
+          <a href="<%= new_student_path %>" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Learning</a>
+        </div>
+      <% end %>
+      <% if current_user == nil %>
+        <div class="row center">
+          <a href="<%= new_user_path %>" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a><br /><br />
+        </div>
+      <% end %>
       <br><br>
 
     </div>
@@ -24,8 +32,8 @@
     <div class="row">
       <div class="col s12 m6">
         <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-          <h5 class="center">Teachers</h5>
+          <h2 class="center brown-text"><i class="medium material-icons">face</i><i class="medium material-icons">school</i></h2>
+          <h5 class="center">For Teachers</h5>
 
           <p class="light">Are you the master of your subject and want to connect to students who want to learn from you?
             Étude provides a platform for freelance teachers to build a profile, share their experience, and connect with
@@ -36,8 +44,8 @@
 
       <div class="col s12 m6">
         <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-          <h5 class="center">Students</h5>
+          <h2 class="center brown-text"><i class="medium material-icons">group</i><i class="medium material-icons">local_library</i></h2>
+          <h5 class="center">For Students</h5>
 
           <p class="light">Keen to learn knitting with Eric?  I wouldn't be, but whatever, the guy for some reason thinks he is
             good at knitting, good enough even that he will take your money in exchange for spending time with him.  Worth it? We
@@ -45,73 +53,49 @@
           </p>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
 
 
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
-    <div class="container">
-      <div class="row center">
-        <h5 class="header green-text col s6 offset-s10 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
-    </div>
+
   </div>
   <div class="parallax"><img src="pianolessons.jpg" alt="Unsplashed background img 2"></div>
 </div>
 
 <div class="container">
   <div class="section">
-
     <div class="row">
       <div class="col s12 center">
-        <h3><i class="mdi-content-send brown-text"></i></h3>
-        <h4>Contact Us</h4>
-        <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<div class="parallax-container valign-wrapper">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        <h3><i class="mdi-content-send brown-text"></i>Subjects</h3>
+        <ul>
+        <% @subjects.each do |s| %>
+          <div class="chip">
+            <%= link_to s.subject, subjects_url(:subject => s.subject) %>
+          </div>
+        <% end %>
+        </ul>
       </div>
     </div>
   </div>
-  <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
 </div>
 
-<section id="subjects">
-<h2>Subjects</h2>
-  <ul>
-  <% @subjects.each do |s| %>
-    <div class="subject">
-      <li><p><%= link_to s.subject, subjects_url(:subject => s.subject) %></p></li>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+      <h5>Featured Teachers</h5>
+      <ul class="collection">
+        <% @teachersfeat.each do |t| %>
+        <li class="collection-item avatar">
+          <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture" class="circle">
+          <span class="title"><%= "#{t.first_name} #{t.last_name}" %></span>
+          <p class="teacher-subject"><%=  "#{t.subject} " %></p>
+          <p class="teacher-price"><%=  "$ #{t.price} " %></p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i><i class="material-icons">grade</i><i class="material-icons">grade</i></a>
+        </li>
+        <% end %>
+      </ul>
     </div>
-  <% end %>
-  </ul>
-</section>
-
-<section id="teachers">
-<h2>Teachers</h2>
-  <ul>
-  <% @teachers.each do |t| %>
-    <%= link_to teacher_url(t.id) do %>
-      <div class="teacher">
-        <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture">
-        <p class="teacher-name"><%=  "#{t.first_name} #{t.last_name}" %></p>
-        <p class="teacher-subject"><%=  "#{t.subject} " %></p>
-        <p class="teacher-price"><%=  "$#{t.price} per hour" %></p>
-      </div>
-    <% end %>
-  <% end %>
-  </ul>
-</section>
+  </div>
