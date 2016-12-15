@@ -1,11 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col m4 offset-m4 s12 center">
+    <div class="col s12 center">
   <% if current_user == nil %>
     <%= render 'users/loginmessage' %>
   <% else %>
+
     <% if current_user.student %>
-      <h5><%= "Book a #{@teacher.subject} lesson with #{@teacher.first_name} #{@teacher.last_name}" %></h5>
+      <h3><%= "Book a #{@teacher.subject} lesson with #{@teacher.first_name} #{@teacher.last_name}" %></h3>
+          <h5 class="red-text"><%= "#{@teacher.user.first_name}'s upcoming bookings in the next 2 weeks" %></h5>
+          <div class="col s6 offset-s3">
+            <ul class="collection col s12">
+              <% @teacher.lessons.where(time: Time.now..Time.now+2.weeks).each do |l| %> <br>
+                <li class="collection-item"><%= l.time.strftime("%A, %B %d, %Y at %I:%M %p") %></li>
+              <% end %>
+            </ul>
+          </div>
       <%= form_for([@teacher, @lesson]) do |f| %>
       <% if @lesson.errors.any? %>
            <div id="error_explanation">
@@ -17,23 +26,33 @@
              </ul>
            </div>
          <% end %>
-         <h6><%= "#{@teacher.first_name}'s availability:" %></h6>
-         <% @teacher.availability_ranges.each do |a| %>
-         <div><%= "#{a.weekday_name}s: #{a.start_time_to_12h} to #{a.end_time_to_12h}" %></div>
-         <% end %>
-        <div class="field">
-          <%= f.label :choose_your_lesson_time %><br />
-          <%= f.datetime_field :time, min: (Date.today + (1.day)), :step => 3600, max: (Date.today + (1.year)) %>
+
+         <div class="row">
+           <div class="col s12 m3 l3">
+             <h5><%= "#{@teacher.first_name}'s availability:" %></h5>
+             <% @teacher.availability_ranges.each do |a| %>
+             <div><b><%= "#{a.weekday_name}s: " %></b> <%= "#{a.start_time_to_12h} to #{a.end_time_to_12h}" %></div>
+             <% end %>
+           </div>
         </div>
-        <div class="field">
-          <%= f.label :format, "What type of lesson do you want?" %><br />
-          <%= f.radio_button(:format, 'online') %>
-          <%= f.label :format_online, "Online" %>
-          <%= f.radio_button(:format, 'offline') %>
-          <%= f.label :format_offline, 'In Person' %>
+
+         <div class="row">
+           <div class="col m4 offset-m4 s12 center">
+          <div class="field">
+            <%= f.label :choose_your_lesson_time %><br />
+            <%= f.datetime_field :time, min: (Date.today + (1.day)), :step => 3600, max: (Date.today + (1.year)) %>
+          </div>
         </div>
-        <div class="actions"><%= f.submit %></div>
-      <% end %>
+      </div>
+          <div class="field">
+            <%= f.label :format, "What type of lesson do you want?" %><br />
+            <%= f.radio_button(:format, 'online') %>
+            <%= f.label :format_online, "Online" %>
+            <%= f.radio_button(:format, 'offline') %>
+            <%= f.label :format_offline, 'In Person' %>
+          </div>
+          <div class="actions btn waves-effect waves-light"><%= f.submit %></div>
+        <% end %>
     <% else %>
       <h1>You are not a student</h1>
     <% end %>

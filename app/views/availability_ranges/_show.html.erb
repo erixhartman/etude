@@ -13,8 +13,8 @@
       <div class="col s4"><%= "#{t.start_time_to_12h}" %></div>
       <div class="col s4"><%= "#{t.end_time_to_12h}" %></div>
         <% if current_user && current_user.id == @teacher.user_id %>
-          <div class="col s2"><button><%= link_to "Edit", edit_availability_range_path(t.id) %></button>
-            <button><%= link_to "Delete", availability_range_path(t.id), method: :delete, data: {confirm: "Are you sure you want to delete?"}%></button>
+          <div class="col s2"><button class="btn waves-effect waves-light"><%= link_to "Edit", edit_availability_range_path(t.id) %></button>
+            <button class="btn waves-effect waves-light"><%= link_to "Delete", availability_range_path(t.id), method: :delete, data: {confirm: "Are you sure you want to delete?"}%></button>
           </div>
         <% end %>
     <% else %>
@@ -24,7 +24,7 @@
         <div class="col s2"><%= "#{Date::DAYNAMES[d]}" %> <%= f.hidden_field(:weekday, value: d)%></div>
         <div class="col s4"><%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %></div>
         <div class="col s4"><%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %></div>
-        <div class="col s2"><span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span></div>
+        <div class="col s2"><span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} ", class: "btn waves-effect waves-light"%></span></div>
         <% end %>
       <% end %>
     <% end %>

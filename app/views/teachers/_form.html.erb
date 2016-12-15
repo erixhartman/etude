@@ -1,50 +1,62 @@
-<%= form_for @teacher do |f| %>
-  <% if @teacher.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@teacher.errors.count, "error") %></h2>
-      <ul>
-        <% @teacher.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    <% end %>
-      </ul>
-  </div>
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio, :rows => "5" %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.text_field :picture %>
-  </div>
-  <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :lesson_price_per_hour %><br />
-    <%= f.number_field(:price, in: 1..10000) %>
-  </div>
-  <div class="field">
-    <%= f.label :street_address %><br />
-    <%= f.text_field :street_address %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :province %><br />
-    <%= f.text_field :province  %>
-  </div>
-  <div class="field">
-    <%= f.label :teaching_since %><br />
-    <%= f.date_field :teaching_since %>
-  </div>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col m4 offset-m4 s12 center">
 
-  <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
+      <%= form_for @teacher do |f| %>
+        <% if @teacher.errors.any? %>
+          <h2><%= pluralize(@teacher.errors.count, "error") %></h2>
+            <ul>
+              <% @teacher.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+          <% end %>
+            </ul>
+        <div class="field">
+          <%= f.label :bio %><br />
+          <%= f.text_area :bio, :rows => "5" %>
+        </div>
+        <div class="field">
+          <%= f.label :picture %><br />
+          <%= f.text_field :picture %>
+        </div>
+        <div class="field">
+          <%= f.label :subject %><br />
+          <%= f.text_field :subject %>
+        </div>
+        <div class="field">
+          <%= f.label :lesson_price_per_hour %><br />
+          <%= f.number_field(:price, in: 1..10000) %>
+        </div>
+        <div class="field">
+          <%= f.label :street_address %><br />
+          <%= f.text_field :street_address %>
+        </div>
+        <div class="field">
+          <%= f.label :city %><br />
+          <%= f.text_field :city %>
+        </div>
+        <div class="field">
+          <%= f.label :province %><br />
+          <%= f.text_field :province  %>
+        </div>
+        <div class="field">
+          <%= f.label :teaching_since %><br />
+          <%= f.text_field :teaching_since, class: "datepicker" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :postal_code %><br />
+          <%= f.text_field :postal_code %>
+        </div>
+        <div class="actions btn waves-effect waves-light"><%= f.submit 'Update' %></div>
+      <% end %>
+
+    </div>
   </div>
-  <div class="actions"><%= f.submit 'Update' %></div>
-<% end %>
+  <br>
+  <br>
+  <br>
+</div>
