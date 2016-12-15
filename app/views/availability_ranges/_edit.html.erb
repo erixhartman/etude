@@ -5,6 +5,6 @@
   <%= f.label :end_time %>
   <%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %>
   <span class="actions">
-  <%= f.submit "Submit New Available Hours"%>
+  <%= f.submit "Submit New Available Hours", class: "btn waves-effect waves-light"%>
   </span>
 <% end %>

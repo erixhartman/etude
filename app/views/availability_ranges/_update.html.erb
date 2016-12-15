@@ -13,7 +13,7 @@
       <%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %>
       <%= f.label :end_time %>
       <%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %>
-      <span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span>
+      <span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} ", class: "btn waves-effect waves-light" %></span>
     <% end %>
   <% end %>
 <% end %>
