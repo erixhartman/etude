@@ -31,10 +31,10 @@ formats = ["online", "offline"]
 
 # Create teacher users
 teacherusers = [
-  { first_name: "Eric", last_name: "Hartman" },
-  { first_name: "Luke", last_name: "Plourde" },
-  { first_name: "Ian", last_name: "Russell" },
-  { first_name: "Mike", last_name: "Schwartze" }
+  { first_name: "Eric", last_name: "Hartman", picture: "https://media.licdn.com/media/AAEAAQAAAAAAAAheAAAAJDg3ZGViYjFhLTExYzItNDg3Ni04YjI4LWFmM2UwMDQyYmJiNg.jpg" },
+  { first_name: "Luke", last_name: "Plourde", picture: "https://avatars3.githubusercontent.com/u/20364812?v=3&s=400" },
+  { first_name: "Ian", last_name: "Russell", picture: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/042/255/0617fe3.jpg" },
+  { first_name: "Mike", last_name: "Schwartze", picture: "http://www.batmangamesonly.com/images/wallpapers/batman-1-1024x768.jpg" }
 ]
 
 x = 0
@@ -53,8 +53,8 @@ teacherusers.each do
     postal_code: "M5H 1K5",
     user_id: x + 1,
     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    picture: "https://randomuser.me/api/portraits/men/#{x + 1}.jpg",
-    teaching_since: Time.now,
+    picture: teacherusers[x][:picture],
+    teaching_since: (Time.now - rand(3..7).years),
     street_address: "220 King Street W",
     city: "Toronto",
     province: "ON"
@@ -119,6 +119,7 @@ id = Teacher.last.id + 1
     password_confirmation: "123"
   )
   subject = subjects[rand(0..subjects.count)]
+  id = Teacher.last.id
   Teacher.create(
     price: rand(20..50),
     subject: subject,
