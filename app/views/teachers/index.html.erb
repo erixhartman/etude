@@ -73,7 +73,7 @@
         <h3><i class="mdi-content-send brown-text"></i>Find Teachers by Subject</h3>
         <ul>
         <% @subjects.each do |s| %>
-          <div class="chip">
+          <div class="chip hoverable">
             <%= link_to s.subject, subjects_url(:subject => s.subject) %>
           </div>
         <% end %>
