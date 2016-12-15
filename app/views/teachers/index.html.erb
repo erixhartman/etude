@@ -88,14 +88,37 @@
       <h5>Featured Teachers</h5>
       <ul class="collection">
         <% @teachersfeat.each do |t| %>
-        <li class="collection-item avatar">
+        <li class="collection-item avatar" href="#">
           <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture" class="circle">
           <span class="title"><%= "#{t.first_name} #{t.last_name}" %></span>
           <p class="teacher-subject"><%=  "#{t.subject} " %></p>
           <p class="teacher-price"><%=  "$ #{t.price} " %></p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i><i class="material-icons">grade</i><i class="material-icons">grade</i></a>
+          <a href="#!" class="secondary-content orange-text">
+          <% rand(4..5).times do %>
+          <i class="material-icons">grade</i>
+          <% end %>
+          </a>
         </li>
         <% end %>
       </ul>
     </div>
+      <div class="col s12 m6">
+        <h5>Newest Teachers</h5>
+        <ul class="collection">
+          <% @teachersnew.each do |t| %>
+          <li class="collection-item avatar">
+            <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture" class="circle">
+            <span class="title"><%= "#{t.first_name} #{t.last_name}" %></span>
+            <p class="teacher-subject"><%=  "#{t.subject} " %></p>
+            <p class="teacher-price"><%=  "$ #{t.price} " %></p>
+            <a href="#!" class="secondary-content orange-text">
+            <% rand(1..4).times do %>
+            <i class="material-icons">grade</i>
+            <% end %>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
   </div>
+</div>
