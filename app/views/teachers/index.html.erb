@@ -35,7 +35,7 @@
           <h2 class="center brown-text"><i class="medium material-icons">face</i><i class="medium material-icons">school</i></h2>
           <h5 class="center">For Teachers</h5>
 
-          <p class="light">Are you the master of a subject and want to connect to students who are ready learn?
+          <p class="light">Are you the master of a subject and want to connect with students who are ready learn?
             Étude provides a platform for freelance teachers to build a profile, share their experience, and book
             both online and in person lessons with students who are eager to learn. <br /><br /> Fill out your profile and start
             booking lessons today!
@@ -89,6 +89,7 @@
       <h4>Featured Teachers</h4>
       <ul class="collection">
         <% @teachersfeat.each do |t| %>
+        <a href="<%= teacher_path(t) %>">
         <li class="collection-item avatar teal lighten-4" href="#">
           <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture" class="circle">
           <span class="title"><%= "#{t.first_name} #{t.last_name}" %></span>
@@ -98,7 +99,7 @@
           <% rand(4..5).times do %>
           <i class="material-icons">grade</i>
           <% end %>
-          </a>
+          </a></a>
         </li>
         <% end %>
       </ul>
@@ -107,6 +108,7 @@
         <h4>Newest Teachers</h4>
         <ul class="collection">
           <% @teachersnew.each do |t| %>
+          <a href="<%= teacher_path(t) %>">
           <li class="collection-item avatar brown lighten-4">
             <img src="<%= t.picture %>" alt="<%= t.first_name %> Picture" class="circle">
             <span class="title"><%= "#{t.first_name} #{t.last_name}" %></span>
@@ -116,7 +118,7 @@
             <% rand(1..4).times do %>
             <i class="material-icons">grade</i>
             <% end %>
-            </a>
+            </a></a>
           </li>
           <% end %>
         </ul>
