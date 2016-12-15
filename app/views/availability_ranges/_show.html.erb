@@ -18,12 +18,14 @@
           </div>
         <% end %>
     <% else %>
+      <% if current_user && current_user.id == @teacher.user_id %>
       <% @availability_range = AvailabilityRange.new %>
       <%= form_for @availability_range do |f| %>
         <div class="col s2"><%= "#{Date::DAYNAMES[d]}" %> <%= f.hidden_field(:weekday, value: d)%></div>
         <div class="col s4"><%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %></div>
         <div class="col s4"><%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %></div>
         <div class="col s2"><span class="actions"><%= f.submit "Add #{Date::DAYNAMES[d]} "%></span></div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

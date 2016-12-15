@@ -1,33 +1,43 @@
-<% if current_user == nil %>
-  <%= render 'users/loginmessage' %>
-<% else %>
-  <% if current_user.student %>
-    <h1><%= "#{@teacher.subject} lessons with #{@teacher.first_name} #{@teacher.last_name}" %></h1>
-    <%= form_for([@teacher, @lesson]) do |f| %>
-    <% if @lesson.errors.any? %>
-         <div id="error_explanation">
-           <h2><%= pluralize(@lesson.errors.count, "Error") %> prevented this lesson from being created:</h2>
-           <ul>
-             <% @lesson.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-             <% end %>
-           </ul>
-         </div>
-       <% end %>
-      <div class="field">
-        <%= f.label :time %><br />
-        <%= f.datetime_field :time, min: (Date.today + (1.day)), :step => 3600, max: (Date.today + (1.year)) %>
-      </div>
-      <div class="field">
-        <%= f.label :format, "What type of lesson do you want?" %><br />
-        <%= f.radio_button(:format, 'online') %>
-        <%= f.label :format_online, "Online" %>
-        <%= f.radio_button(:format, 'offline') %>
-        <%= f.label :format_offline, 'In Person' %>
-      </div>
-      <div class="actions"><%= f.submit %></div>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col m4 offset-m4 s12 center">
+  <% if current_user == nil %>
+    <%= render 'users/loginmessage' %>
   <% else %>
-    <h1>You are not a student</h1>
-  <% end %>
-<% end%>
+    <% if current_user.student %>
+      <h5><%= "Book a #{@teacher.subject} lesson with #{@teacher.first_name} #{@teacher.last_name}" %></h5>
+      <%= form_for([@teacher, @lesson]) do |f| %>
+      <% if @lesson.errors.any? %>
+           <div id="error_explanation">
+             <h2><%= pluralize(@lesson.errors.count, "Error") %> prevented this lesson from being created:</h2>
+             <ul>
+               <% @lesson.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+               <% end %>
+             </ul>
+           </div>
+         <% end %>
+         <h6><%= "#{@teacher.first_name}'s availability:" %></h6>
+         <% @teacher.availability_ranges.each do |a| %>
+         <div><%= "#{a.weekday_name}s: #{a.start_time_to_12h} to #{a.end_time_to_12h}" %></div>
+         <% end %>
+        <div class="field">
+          <%= f.label :choose_your_lesson_time %><br />
+          <%= f.datetime_field :time, min: (Date.today + (1.day)), :step => 3600, max: (Date.today + (1.year)) %>
+        </div>
+        <div class="field">
+          <%= f.label :format, "What type of lesson do you want?" %><br />
+          <%= f.radio_button(:format, 'online') %>
+          <%= f.label :format_online, "Online" %>
+          <%= f.radio_button(:format, 'offline') %>
+          <%= f.label :format_offline, 'In Person' %>
+        </div>
+        <div class="actions"><%= f.submit %></div>
+      <% end %>
+    <% else %>
+      <h1>You are not a student</h1>
+    <% end %>
+  <% end%>
+</div>
+</div>
+</div>
