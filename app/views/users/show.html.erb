@@ -1,3 +1,4 @@
+<div class="container">
 <% if current_user == nil %>
   <%= render 'loginmessage' %>
 <% else %>
@@ -27,10 +28,10 @@
       </div>
       <% end %>
       <!-- Showing Lessons that are in the past -->
-      <h3>Past lessons</h3>
       <div id="past-student-lessons">
       <% current_user.student.lessons.each do |l| %>
         <% if l.time < Time.now %>
+        <h3>Past lessons</h3>
           <ul>
             <div class="past-student-lessons">
               <li>
@@ -74,20 +75,16 @@
       </div>
       <% end %>
 
-    <h3>Past lessons</h3>
-    <div id="past-teacher-lessons">
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
+        <h3>Past lessons</h3>
         <ul>
-          <div class="past-teacher-lessons">
             <li>
               <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
               <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %>
             </li>
-          </div>
         </ul>
         <% end %>
-      </div>
       <% end %>
 
     <% else %>
@@ -98,3 +95,4 @@
     <h3>Please select whether you'd like to learn or teach!</h3>
   <% end %>
 <% end %>
+</div>
