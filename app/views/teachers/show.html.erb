@@ -1,27 +1,58 @@
 <div class="container">
-  <section id="teacher-profile-full">
-    <h3><img src="<%= @teacher.picture %>" alt="<%= @teacher.first_name %> Picture"></h3>
-    <h3><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h3>
-    <h3><%= "Subject: #{@teacher.subject}" %></h3>
-    <h3> <%= "About #{@teacher.first_name}" %></h3>
-    <p><%= "#{@teacher.bio}" %></p>
-    <h3><%= "Cost per lesson: $#{@teacher.price}" %></h3>
-    <h3><%= "Teaching since: #{@teacher.teaching_since}" %></h3>
-    <h3> <%= "#{@teacher.first_name}'s address" %></h3>
-    <h3><%= "#{@teacher.street_address}, #{@teacher.city}" %></h3>
-    <h3><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h3>
-    <h3><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h3>
-    <%= render 'availability_ranges/show' %>
-  </section>
-
+<!-- Row 1 -->
   <div class="row">
-    <div class="col s12 center">
+    <div class="col s12 m6">
+      <!-- Teacher image -->
+      <h5><img id="teacher-img" src="<%= @teacher.picture %>" alt="<%= @teacher.first_name %> Picture"></h5>
+    </div>
+    <div class="col s12 m6">
+      <!-- Book Lesson link -->
+      <h6><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h6>
+      <!-- Full name -->
+      <h5><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h5>
+      <!-- Subject -->
+      <h5><%= "Subject: #{@teacher.subject}" %></h5>
+      <!-- Teaching Since -->
+      <h5><%= "Teaching since: #{@teacher.teaching_since}" %></h5>
+    </div>
+  </div>
+<!-- Row 2 -->
+  <div class="row">
+    <div class="col s12">
+      <!-- About -->
+      <h5> <%= "About #{@teacher.first_name}" %></h5>
+      <p><%= "#{@teacher.bio}" %></p>
+    </div>
+  </div>
+<!-- Row 3 -->
+  <div class="row">
+    <div class="col s12 m6">
+      <!-- Street Address -->
+      <h5> <%= "#{@teacher.first_name}'s address" %></h3>
+      <h5><%= "#{@teacher.street_address}, #{@teacher.city}" %></h5>
+      <h5><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h5>
+    </div>
+    <div class="col s12 m6">
       <iframe
       width="100%"
       height="500px"
       frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.secrets.maps_key %>&q=<%= @teacher.full_address %>" allowfullscreen>
-      </iframe>
+      src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.secrets.maps_key %>&q=<%= @teacher.full_address %>" allowfullscreen>
+    </iframe>
+    </div>
+  </div>
+<!-- Row 4 -->
+  <div class="row">
+    <div class="col s12 m6">
+      <!-- Availability -->
+      <h5> <%= "#{@teacher.first_name}'s availability" %></h3>
+      <%= render 'availability_ranges/show' %>
+    </div>
+    <div class="col s12 m6">
+      <!-- Cost -->
+      <h5><%= "Cost per lesson: $#{@teacher.price}" %></h5>
+      <!-- Book lesson -->
+      <h5><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h5>
     </div>
   </div>
 </div>
