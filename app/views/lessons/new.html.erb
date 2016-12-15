@@ -7,10 +7,21 @@
     <% if current_user.student %>
       <h5><%= "Book a #{@teacher.subject} lesson with #{@teacher.first_name} #{@teacher.last_name}" %></h5>
 
-      <h5><%= "#{@teacher.user.first_name}'s upcoming bookings in the next 2 weeks" %></h5>
-        <% @teacher.lessons.where(time: Time.now..Time.now+2.weeks).each do |l| %> <br>
-          <%= l.time.strftime("%A, %B %d, %Y at %I:%M %p") %>
-        <% end %>
+      <table class="striped red-text centered">
+        <thead>
+          <tr>
+            <th class="teal-text"><h5><%= "#{@teacher.user.first_name}'s upcoming bookings in the next 2 weeks" %></h5></th>
+          </tr>
+        </thead>
+            <tbody>
+              <% @teacher.lessons.where(time: Time.now..Time.now+2.weeks).each do |l| %> <br>
+                <tr><td>
+
+                <%= l.time.strftime("%A, %B %d, %Y at %I:%M %p") %></td></tr>
+              <% end %>
+            </tbody>
+      </table>
+
 
       <%= form_for([@teacher, @lesson]) do |f| %>
       <% if @lesson.errors.any? %>
@@ -23,7 +34,7 @@
              </ul>
            </div>
          <% end %>
-         <h6><%= "#{@teacher.first_name}'s availability:" %></h6>
+         <h5><%= "#{@teacher.first_name}'s availability:" %></h5>
          <% @teacher.availability_ranges.each do |a| %>
          <div><%= "#{a.weekday_name}s: #{a.start_time_to_12h} to #{a.end_time_to_12h}" %></div>
          <% end %>
