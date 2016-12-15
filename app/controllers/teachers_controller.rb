@@ -2,6 +2,7 @@ class TeachersController < ApplicationController
   def index
     @teachers = Teacher.all
     @teachersfeat = Teacher.take(5)
+    @teachersnew = Teacher.order(teaching_since: :desc).take(5)
     @subjects = @teachers.select("subject").group("subject")
   end
 
