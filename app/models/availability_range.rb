@@ -19,6 +19,10 @@ class AvailabilityRange < ApplicationRecord
     time_12h(t)
   end
 
+  def sum_of_hours
+    self.end_time - self.start_time
+  end
+
   def time_12h(t)
     case t
     when 0
