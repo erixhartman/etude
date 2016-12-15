@@ -3,7 +3,7 @@
   <%= render 'users/loginmessage' %>
 <% elsif current_user.teacher && current_user.teacher.id == @lesson.teacher_id || current_user.student && current_user.student.id == @lesson.student_id %>
   <h5><%= "#{@lesson.teacher.subject} with #{@lesson.teacher.first_name} #{@lesson.teacher.last_name}" %></h5>
-  <p> Date/Time: <%= "#{@lesson.time}" %></p>
+  <p> Date/Time: <%= "#{@lesson.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %></p>
   <%= link_to "Cancel Lesson", lesson_path(@lesson.id), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"} %><br>
 
   <% if @lesson.format == 'online' %>
