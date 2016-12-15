@@ -27,6 +27,8 @@ lastnames = [
   'Zoigbert', 'Cumberbatch', 'Straussenbaum', 'Grundenbladt', 'Stoigenfeldt'
 ]
 
+formats = ["online", "offline"]
+
 # Create teacher users
 teacherusers = [
   { first_name: "Eric", last_name: "Hartman" },
@@ -97,7 +99,8 @@ teachers.each do |t|
       Lesson.create(
       time: Time.new(rand(2016..2017), rand(2..12), (rand(1..28)), (start_time + 1), 0, 0),
       student_id: rand(1..Student.all.count),
-      teacher_id: t
+      teacher_id: t,
+      format: "#{formats[rand(0..1)]}"
       )
     end
     x = x + 1
