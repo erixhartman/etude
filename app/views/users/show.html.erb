@@ -53,12 +53,12 @@
   <% elsif current_user.teacher %>
     <%= link_to "Edit Profile", edit_teacher_path %>
     <section id='teacher-availability'>
-      <h3>Please select your availability</h3>
+      <h5><%= "You are available for lessons #{@teacher.availability_ranges.count} days a week" %></h5>
       <%= render 'availability_ranges/show' %>
     </section>
 
     <% if @teacher.lessons.length != 0  %>
-      <h3>Upcoming lessons</h3>
+      <h5>Upcoming lessons</h5>
       <div id="current-teacher-lessons">
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time > Time.now %>
@@ -72,12 +72,12 @@
           </div>
         </ul>
         <% end %>
-      </div>
       <% end %>
+    </div>
 
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
-        <h3>Past lessons</h3>
+        <h5>Past lessons</h5>
         <ul>
             <li>
               <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
@@ -88,11 +88,11 @@
       <% end %>
 
     <% else %>
-    <h3>No one has booked a lesson with you yet</h3>
+    <h5>No one has booked a lesson with you yet</h5>
     <% end %>
 
     <% else %>
-    <h3>Please select whether you'd like to learn or teach!</h3>
+    <h5>Please select whether you'd like to learn or teach!</h5>
   <% end %>
 <% end %>
 </div>
