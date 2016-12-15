@@ -3,6 +3,8 @@ class Lesson < ApplicationRecord
   belongs_to :student
 
   validates :time, allow_blank: false, presence: true
+  validates :format, presence: true
+
   validate :lesson_active, on: :create
   validate :teacher_must_be_available, on: :create
   validate :teacher_must_be_generally_available, on: :create

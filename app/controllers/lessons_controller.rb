@@ -10,6 +10,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(
       teacher_id: @teacher.id,
       time: lesson_params[:time],
+      format: lesson_params[:format],
       student_id: current_user.student.id
     )
 
@@ -33,7 +34,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit(:time)
+    params.require(:lesson).permit(:time, :format)
   end
 
 end
