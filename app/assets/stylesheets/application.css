@@ -81,3 +81,10 @@ header h1 {
   max-width: 150px;
   border-radius: 50%;
 }
+
+.teacher-pic-subj {
+  border: 5px solid black;
+  max-width: 150px;
+  border-radius: 50%;
+
+}
