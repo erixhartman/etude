@@ -54,3 +54,7 @@ class Teacher < ApplicationRecord
     "#{self.street_address},#{self.postal_code}".gsub!(" ", "+")
   end
 end
+
+SUBJECTS = ['Spanish', 'Guitar', 'French', 'Drums', 'Recorder', 'Samba', 'Welding',
+  'Woodworking', 'Scrapbooking', 'Knitting', 'Korean', 'Cooking', 'Karate', 'Bridge',
+  'Fishing', 'Waterskiing', 'Kiteboarding', 'Trombone', 'Trumpet', 'Boxing']

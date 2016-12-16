@@ -24,7 +24,7 @@
         </div>
         <div class="field">
           <%= f.label :subject %><br />
-          <%= f.text_field :subject %>
+          <%= f.select(:subject, Teacher::SUBJECTS) %>
         </div>
         <div class="field">
           <%= f.label :lesson_price_per_hour %><br />
