@@ -1,7 +1,8 @@
 <%= form_for @availability_range do |f| %>
-  <p>Change Availabilty for <%= @availability_range.weekday_name %></p>
+  <h5 class="center">Change Availabilty for <%= @availability_range.weekday_name %></h5>
   <%= f.label :start_time %>
   <%= f.select(:start_time, AvailabilityRange::HOURS_OF_DAY) %>
+  <br>
   <%= f.label :end_time %>
   <%= f.select(:end_time, AvailabilityRange::HOURS_OF_DAY) %>
   <span class="actions">
