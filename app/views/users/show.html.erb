@@ -51,10 +51,22 @@
   </section>
 <!-- Teacher section starts here -->
   <% elsif current_user.teacher %>
-    <%= link_to "Edit Profile", edit_teacher_path %>
+  <div class=row>
+    <div class="fixed-action-btn toolbar">
+      <a class="btn-floating btn-large teal">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+      <ul>
+        <li class="waves-effect waves-light"><a href=<%= edit_teacher_path %>><i class="material-icons"></i>Edit Profile</a></li>
+        <li class="waves-effect waves-light"><a href="#upcoming"><i class="material-icons"></i>Upcoming Lessons</a></li>
+        <li class="waves-effect waves-light"><a href="#past"><i class="material-icons"></i>Past Lessons</a></li>
+        <li class="waves-effect waves-light"><a href="#availability"><i class="material-icons"></i>Edit Availability</a></li>
+      </ul>
+    </div>
+  </div>
 
     <% if @teacher.lessons.length != 0  %>
-
+    <a name="upcoming"></a>
     <h5>Upcoming lessons</h5>
     <div id="current-teacher-lessons">
         <table>
@@ -82,6 +94,7 @@
       </div>
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
+        <a name="past"></a>
         <h5>Past lessons</h5>
         <ul>
             <li>
@@ -91,12 +104,16 @@
         </ul>
         <% end %>
       <% end %>
-
+        <br>
+        <div class="divider"></div>
+        <br>
+        <a name="availability"></a>
       <section id='teacher-availability'>
         <h5><%= "You are available for lessons #{@teacher.availability_ranges.count} days a week" %></h5>
         <%= render 'availability_ranges/show' %>
       </section>
-
+        <br>
+        <br>
     <% else %>
     <h5>No one has booked a lesson with you yet</h5>
     <% end %>
