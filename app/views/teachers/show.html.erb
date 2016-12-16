@@ -26,13 +26,33 @@
   </div>
 <!-- Row 3 -->
   <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12 m6 center">
       <!-- Street Address -->
       <h5> <%= "#{@teacher.first_name}'s address" %></h3>
       <h5><%= "#{@teacher.street_address}, #{@teacher.city}" %></h5>
       <h5><%= "#{@teacher.province}, #{@teacher.postal_code}" %></h5>
+      <br>
+      <div class="divider"></div>
+
+      <br>
+      <!-- Availability -->
+      <h5 class="center"> <%= "#{@teacher.first_name}'s availability" %></h3>
+        <br>
+      <% @teacher.availability_ranges.each do |a| %>
+        <%= "#{a.weekday_name[0, 3]} #{a.start_time_to_12h} - #{a.end_time_to_12h}" %><br>
+      <% end %>
+      <br>
+      <br>
+      <div class="divider"></div>
+
+      <!-- Cost -->
+      <h5><%= "Cost per lesson: $#{@teacher.price}" %></h5>
+      <!-- Book lesson -->
+      <h5><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h5>
     </div>
     <div class="col s12 m6">
+      <br>
+      <br>
       <iframe
       width="100%"
       height="500px"
@@ -40,19 +60,8 @@
       src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.secrets.maps_key %>&q=<%= @teacher.full_address %>" allowfullscreen>
     </iframe>
     </div>
+    <br>
   </div>
 <!-- Row 4 -->
-  <div class="row">
-    <div class="col s12 m6">
-      <!-- Availability -->
-      <h5> <%= "#{@teacher.first_name}'s availability" %></h3>
-      <%= render 'availability_ranges/show' %>
-    </div>
-    <div class="col s12 m6">
-      <!-- Cost -->
-      <h5><%= "Cost per lesson: $#{@teacher.price}" %></h5>
-      <!-- Book lesson -->
-      <h5><%= link_to 'Book Lesson', new_teacher_lesson_path(@teacher.id) %></h5>
-    </div>
-  </div>
+
 </div>
