@@ -23,7 +23,7 @@
       <div class="nav-wrapper container">
         <a id="logo-container" href="<%= root_path %>" class="brand-logo">Étude</a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="<%= root_path %>">Main</a></li>
+          <li><a href="<%= root_path %>"><i class="medium material-icons">home</i></a></li>
           <% unless current_user %>
             <li><%= link_to 'Sign Up', new_user_path %></li>
             <li><%= link_to 'Log In', new_session_path %></li>
