@@ -9,41 +9,57 @@
     <!-- Showing Students Lessons if they have any -->
     <% if current_user.student.lessons.length > 0 %>
     <!-- Showing lessons that are in the future -->
-      <section id="student-lessons">
-      <h3>Upcoming lessons</h3>
-      <div id="current-student-lessons">
-      <% current_user.student.lessons.each do |l| %>
-        <% if l.time > Time.now %>
-          <ul>
-            <div class="current-student-lesson">
-              <li>
-                <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-                <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
-                <%= "For $#{l.teacher.price} per hour" %>
-                <button><%= link_to "View Lesson", lesson_path(l.id) %></button>
-              </li>
-            </div>
-          </ul>
-        <% end %>
-      </div>
-      <% end %>
+    <h5>Upcoming lessons</h5>
+    <div id="current-student-lessons">
+          <table>
+            <thead>
+              <tr>
+                <th>Teacher</th>
+                <th>Time</th>
+                <th>Format</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+          <% current_user.student.lessons.each do |l| %>
+          <% if l.time > Time.now %>
+            <tr>
+                  <td><%= "#{l.teacher.first_name} #{l.teacher.last_name}" %></td>
+                  <td><%= "#{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %></td>
+                  <td><%= l.format.titleize %></td>
+                  <td><%= link_to "View Lesson", lesson_path(l.id) %></td>
+            </tr>
+            <% end %>
+          <% end %>
+            </tbody>
+          </table>
+        </div>
       <!-- Showing Lessons that are in the past -->
+      <% if current_user.student.lessons.where(time: Time.now-5.years..Time.now).count > 0 %>
+      <h5>Past lessons</h5>
       <div id="past-student-lessons">
-      <% current_user.student.lessons.each do |l| %>
-        <% if l.time < Time.now %>
-        <h3>Past lessons</h3>
-          <ul>
-            <div class="past-student-lessons">
-              <li>
-                <%= "#{l.teacher.subject} with #{l.teacher.first_name} #{l.teacher.last_name} | " %>
-                <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
-                <%= "For $#{l.teacher.price} per hour" %>
-              </li>
-            </div>
-          </ul>
-        <% end %>
-      </div>
-      <% end %>
+            <table>
+              <thead>
+                <tr>
+                  <th>Teacher</th>
+                  <th>Time</th>
+                  <th>Format</th>
+                </tr>
+              </thead>
+              <tbody>
+            <% current_user.student.lessons.each do |l| %>
+            <% if l.time < Time.now %>
+              <tr>
+                    <td><%= "#{l.teacher.first_name} #{l.teacher.last_name}" %></td>
+                    <td><%= "#{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %></td>
+                    <td><%= l.format.titleize %></td>
+              </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+              </tbody>
+            </table>
+          </div>
     <!-- Showing that a student hasn't booked any lessons -->
     <% else %>
     <h3>You have not booked any lessons!</h3>
