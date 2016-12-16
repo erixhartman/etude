@@ -80,7 +80,7 @@
           </thead>
           <tbody>
         <% current_user.teacher.lessons.each do |l| %>
-          <% if l.time > Time.now %>
+        <% if l.time > Time.now %>
           <tr>
                 <td><%= "#{l.student.first_name} #{l.student.last_name}" %></td>
                 <td><%= "#{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %></td>
@@ -92,18 +92,32 @@
           </tbody>
         </table>
       </div>
-      <% current_user.teacher.lessons.each do |l| %>
-        <% if l.time < Time.now %>
+      <% if current_user.teacher.lessons.where(time: Time.now-5.years..Time.now).count > 0 %>
         <a name="past"></a>
-        <h5>Past lessons</h5>
-        <ul>
-            <li>
-              <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-              <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %>
-            </li>
-        </ul>
-        <% end %>
-      <% end %>
+        <h5>Past Lessons</h5>
+        <div id="past-teacher-lessons">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Time</th>
+                  <th>Format</th>
+                </tr>
+              </thead>
+              <tbody>
+            <% current_user.teacher.lessons.each do |l| %>
+              <% if l.time < Time.now %>
+              <tr>
+                    <td><%= "#{l.student.first_name} #{l.student.last_name}" %></td>
+                    <td><%= "#{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %></td>
+                    <td><%= l.format.titleize %></td>
+              </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+            </tbody>
+          </table>
+        </div>
         <br>
         <div class="divider"></div>
         <br>
