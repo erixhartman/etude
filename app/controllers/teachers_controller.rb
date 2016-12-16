@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   def index
+    @eric = User.find_by(last_name: "Hartman").teacher
     @teachers = Teacher.all
     @teachersfeat = Teacher.order(teaching_since: :asc).take(5)
     @teachersnew = Teacher.order(teaching_since: :desc).take(5)
