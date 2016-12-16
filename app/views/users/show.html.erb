@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container center">
 <% if current_user == nil %>
   <%= render 'loginmessage' %>
 <% else %>
@@ -52,29 +52,34 @@
 <!-- Teacher section starts here -->
   <% elsif current_user.teacher %>
     <%= link_to "Edit Profile", edit_teacher_path %>
-    <section id='teacher-availability'>
-      <h5><%= "You are available for lessons #{@teacher.availability_ranges.count} days a week" %></h5>
-      <%= render 'availability_ranges/show' %>
-    </section>
 
     <% if @teacher.lessons.length != 0  %>
-      <h5>Upcoming lessons</h5>
-      <div id="current-teacher-lessons">
-      <% current_user.teacher.lessons.each do |l| %>
-        <% if l.time > Time.now %>
-        <ul>
-          <div class="current-teacher-lessons">
-            <li>
-              <%= "Lesson with:#{l.student.first_name} #{l.student.last_name}" %>
-              <%= "Date & Time: #{l.time.strftime("%A, %B %d, %Y at %I:%M %p")} | " %>
-              <button><%= link_to "View Lesson", lesson_path(l.id) %></button>
-            </li>
-          </div>
-        </ul>
-        <% end %>
-      <% end %>
-    </div>
 
+    <h5>Upcoming lessons</h5>
+    <div id="current-teacher-lessons">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Time</th>
+              <th>Format</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+        <% current_user.teacher.lessons.each do |l| %>
+          <% if l.time > Time.now %>
+          <tr>
+                <td><%= "#{l.student.first_name} #{l.student.last_name}" %></td>
+                <td><%= "#{l.time.strftime("%A, %B %d, %Y at %I:%M %p")}" %></td>
+                <td><%= l.format.titleize %></td>
+                <td><%= link_to "View Lesson", lesson_path(l.id) %></td>
+          </tr>
+          <% end %>
+        <% end %>
+          </tbody>
+        </table>
+      </div>
       <% current_user.teacher.lessons.each do |l| %>
         <% if l.time < Time.now %>
         <h5>Past lessons</h5>
@@ -86,6 +91,11 @@
         </ul>
         <% end %>
       <% end %>
+
+      <section id='teacher-availability'>
+        <h5><%= "You are available for lessons #{@teacher.availability_ranges.count} days a week" %></h5>
+        <%= render 'availability_ranges/show' %>
+      </section>
 
     <% else %>
     <h5>No one has booked a lesson with you yet</h5>
