@@ -1,24 +1,7 @@
-# README
+Etude
+=====
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+About
+-----
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Etude is a freelance teaching platform created by Michael Schwartze, Luke Plourde, Ian Russell, and Eric Hartman. The project was built using Ruby on Rails and with [Matrialize](https://materializecss.com/), a front-end framework. The entire project was completed in the length of a single two work-week sprint.
